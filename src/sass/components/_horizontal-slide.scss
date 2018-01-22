@@ -1,0 +1,26 @@
+.horizontal-slide {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    &__wrapper {
+        align-items: center;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        &--card {
+            width: 25vw;
+            margin-top: 1rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            margin-right: 1rem;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            overflow-x: auto;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: $accent-color;
+            box-shadow: 0 10px 20px rgba($color-black, 0.2);
+        }
+    }
+}

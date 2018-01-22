@@ -1,19 +1,35 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import location from './modules/location';
+import forecast from './modules/forecast';
+import tides from "./modules/tides";
+
 Vue.use(Vuex);
 
-import config from "./modules/storeConfig";
-import user from "./modules/storeUser";
-import character from "./modules/storeCharacter";
-import chapter from "./modules/storeChapter";
-import page from "./modules/storePage";
-
 export const store = new Vuex.Store({
+  state: {
+    status: 'SEARCH'
+  },
+  getters: {
+    status: state => {
+      return state.status;
+    }
+  },
+  mutations: {
+    'SET_STATUS': (state, payload) => {
+      status.value = payload;
+    }
+  },
+  actions: {
+    updateStatus: ({
+      commit
+    }, payload) => {
+      commit('SET_STATUS', payload);
+    }
+  },
   modules: {
-    config,
-    user,
-    character,
-    chapter,
-    page
+    location,
+    forecast,
+    tides
   }
 });

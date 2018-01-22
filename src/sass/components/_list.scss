@@ -1,7 +1,7 @@
-ul {
-  list-style: none;
-}
-
-li.section-list-item {
-  font-size: $font-size-medium;
+ul.links {
+    margin-top: $gutter-medium;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }

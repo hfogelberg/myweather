@@ -13,10 +13,8 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "cloudinary": "^1.9.1",
     "cors": "^2.8.4",
-    "mongoose": "^4.13.6",
-    "validator": "^9.2.0",
+    "moment": "^2.20.1",
     "vue": "^2.4.4",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

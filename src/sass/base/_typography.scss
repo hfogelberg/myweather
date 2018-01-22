@@ -1,18 +1,27 @@
-body {
-    font-family: "Exo", sans-serif;
-    font-weight: 400;
-    line-height: 1.7;
-    color: $color-off-white;
-    padding: 3rem;
-    box-sizing: border-box;
+.primary-header {
+    color: $primary-color-text;
+    text-align: center;
+    font-size: 7rem;
+    letter-spacing: 0.12rem;
 }
 
 .secondary-header {
-    font-size: $font-size-large;
-    color: $color-menu-dark;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
+    color: $primary-color-text;
     text-align: center;
+    font-size: 4rem;
+    margin-bottom: $gutter-small;
 }
 
-.tertiary-header {}
+.tertiary-header {
+    color: $secondary-text-color;
+    text-align: center;
+    font-size: 2rem;
+}
+
+p {
+    font-size: $default-font-size;
+    font-weight: 400;
+    margin-bottom: $gutter-small;
+    width: 70vw;
+    margin-left: 15vw;
+}

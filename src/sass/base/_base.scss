@@ -12,7 +12,10 @@ html {
 }
 
 body {
-    box-sizing: border-box;
-    color: $color-text-main;
-    background-color: $color-paper-light;
+    background-color: $background-color;
+    color: $primary-color-text;
+    font-size: 16px;
+    line-height: 1.7;
+    width: 90vw;
+    margin-left: 6vw;
 }

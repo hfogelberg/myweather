@@ -1,0 +1,13 @@
+.page-layout {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    height: 100%;
+    justify-content: flex-start;
+    padding: $gutter-medium;
+}
