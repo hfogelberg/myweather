@@ -8,23 +8,23 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    status: 'SEARCH'
+    isSearching: false
   },
   getters: {
-    status: state => {
-      return state.status;
+    isSearching: state => {
+      return state.isSearching;
     }
   },
   mutations: {
-    'SET_STATUS': (state, payload) => {
-      status.value = payload;
+    toggleIsSearching: (state) => {
+      state.isSearching = !state.isSearching
     }
   },
   actions: {
-    updateStatus: ({
+    setIsSearching: ({
       commit
-    }, payload) => {
-      commit('SET_STATUS', payload);
+    }) => {
+      commit("toggleIsSearching");
     }
   },
   modules: {

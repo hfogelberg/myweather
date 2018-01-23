@@ -1,8 +1,9 @@
 <template>
   <div class='weather-container'>
-    <h1 class="primary-header">
+
+    <h2 class="primary-secondary">
       Weather in {{city}}
-    </h1>
+    </h2>
     
     <weather-card v-if="showNow" :forecast="currently" class='card'/>
 

@@ -43,6 +43,7 @@ const actions = {
     axios.get(url)
       .then((res) => {
         context.commit("setCity", res.data.name);
+        context.commit("toggleIsSearching");
       })
       .catch((err) => {
         console.log(err);
