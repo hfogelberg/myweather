@@ -1,19 +1,20 @@
 <template>
-  <div class='weather-container'>
-    <ul class="menu-bar">
-      <li class="menu-bar__item">
-        <router-link to="/"             class="menu-bar__item--link">
-            MyWeather
-        </router-link>
-      </li>
-      <li>
-        <button @click="getTides" class="btn-transparent menu-bar__item--link btn-1 btn-medium">Tides</button>
-      </li>
-      <li>
-        <button @click="getSunmoon" class="menu-bar__item--link btn-2 btn-medium">Sun and Moon</button>
-      </li>
-    </ul>
+<div>
+  <ul class="menu-bar">
+    <li class="menu-bar__item">
+      <router-link to="/"             class="menu-bar__item--link">
+          MyWeather
+      </router-link>
+    </li>
+    <li>
+      <button @click="getTides" class="btn-transparent menu-bar__item--link btn-1 btn-medium">Tides</button>
+    </li>
+    <li>
+      <button @click="getSunmoon" class="menu-bar__item--link btn-2 btn-medium">Sun and Moon</button>
+    </li>
+  </ul>
 
+  <div class='weather-container'>
     <h2 class="secondary-header">
       Weather in {{city}}
     </h2>
@@ -42,6 +43,7 @@
       <li><button @click="days" class="btn-large btn-3">Days</button></li>
     </ul>
   </div>
+</div>
 </template>
       
       

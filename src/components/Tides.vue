@@ -1,19 +1,20 @@
 <template>
-  <div class='tides-container'>
-    <ul class="menu-bar">
-      <li class="menu-bar__item">
-        <router-link to="/"             class="menu-bar__item--link">
-            MyWeather
-        </router-link>
-      </li>
-      <li>
-        <button @click="getWeather" class="btn-transparent menu-bar__item--link btn-1 btn-medium">Weather</button>
-      </li>
-      <li>
-        <button @click="getSunmoon" class="menu-bar__item--link btn-2 btn-medium">Sun and Moon</button>
-      </li>
-    </ul>
+<div>
+  <ul class="menu-bar">
+    <li class="menu-bar__item">
+      <router-link to="/"             class="menu-bar__item--link">
+          MyWeather
+      </router-link>
+    </li>
+    <li>
+      <button @click="getWeather" class="btn-transparent menu-bar__item--link btn-1 btn-medium">Weather</button>
+    </li>
+    <li>
+      <button @click="getSunmoon" class="menu-bar__item--link btn-2 btn-medium">Sun and Moon</button>
+    </li>
+  </ul>
 
+  <div class='tides-container'>
     <h2 class="secondary-header">
       Tides in {{city}}
     </h2>
@@ -27,6 +28,7 @@
     </div>
   
   </div>
+</div>
 </template>
 
 <script>
