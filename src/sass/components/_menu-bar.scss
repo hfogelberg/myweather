@@ -1,0 +1,25 @@
+.menu-bar {
+    width: 100vh;
+    height: 6rem;
+    line-height: 6rem;
+    padding: $gutter-xsmall;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: $gutter-small;
+    &__item {
+        margin-right: $gutter-small;
+        &:first-child {
+            font-size: 4rem;
+            font-weight: 400;
+            color: $primary-color-text;
+        }
+        &--link {
+            flex: 0 0 auto;
+            margin: 0.2em;
+        }
+        &:nth-child(1) {
+            margin-right: auto;
+        }
+    }
+}

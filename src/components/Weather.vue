@@ -1,7 +1,20 @@
 <template>
   <div class='weather-container'>
+    <ul class="menu-bar">
+      <li class="menu-bar__item">
+        <router-link to="/"             class="menu-bar__item--link">
+            MyWeather
+        </router-link>
+      </li>
+      <li>
+        <button @click="getTides" class="btn-transparent menu-bar__item--link btn-1 btn-medium">Tides</button>
+      </li>
+      <li>
+        <button @click="getSunmoon" class="menu-bar__item--link btn-2 btn-medium">Sun and Moon</button>
+      </li>
+    </ul>
 
-    <h2 class="primary-secondary">
+    <h2 class="secondary-header">
       Weather in {{city}}
     </h2>
     
@@ -62,6 +75,15 @@ export default {
           this.showNow=false;
           this.showDay=true;
           this.showHour=false;
+      },
+
+      getTides() {
+        this.$store.dispatch("getTides");
+        this.$router.push("/tides");
+      },
+
+      getSunmoon() {
+        this.$router.push("/sunmoon");
       }
   },
 

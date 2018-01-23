@@ -1,14 +1,14 @@
 <template>    
   <div class="search-container">
     <h1 class="primary-header">My Weather</h1>
-      <ul class="search-row">
-        <li><input type="text" class="search-location" v-model="city"></li>
-        <li>
-          <button @click="getLocation" class="btn-transparent btn-gps"> 
-            <img src="/public/icons/gps.svg" class="img-gps"/>
-          </button>
-        </li>
-      </ul>
+    <ul class="search-row">
+      <li><input type="text" class="search-location" v-model="city"></li>
+      <li>
+        <button @click="getLocation" class="btn-transparent btn-gps"> 
+          <img src="/public/icons/gps.svg" class="img-gps"/>
+        </button>
+      </li>
+    </ul>
 
     <div v-if="isSearching">
       <h2 class="heading-secondary">Checking where you are ...</h2>
