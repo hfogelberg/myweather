@@ -1,5 +1,5 @@
 <template>
-<div class="horizontal-slide__wrapper--card">          
+    <div class="horizontal-slide__wrapper--card">          
     <table class="forecast">
         <tr>
         <td>
@@ -42,19 +42,8 @@
 </template>
 
 <script>
-import moment from 'moment';
-
 export default {
-    props: ["forecast"],
-    methods: {
-        formatDate(val) {
-        var date = new Date(val*1000);
-            return moment(date).format("ddd DD")
-        },
-        round(val) {
-        return Math.round(val)
-    }
-  }
+    props: ["forecast"]
 }
 </script>
 

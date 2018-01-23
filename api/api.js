@@ -1,9 +1,7 @@
-const axios = require('axios'),
-  moment = require("Moment");
+const axios = require('axios');
 
 const api = (app) => {
   app.get('/api/', (req, res) => {
-    console.log('API called');
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({
       message: 'API is alive'
@@ -17,10 +15,12 @@ const api = (app) => {
     var key = process.env.WORLD_TIDES_KEY;
 
     let url = `https://www.worldtides.info/api?extremes&lat=${lat}&lon=${lon}&key=${key}`;
-    console.log(url);
     axios.get(url)
-      .then((res) => {
-        let extremes = res.data.extremes;
+      .then((result) => {
+        let tides = result.data.extremes;
+        res.send({
+          tides
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -80,7 +80,7 @@ const api = (app) => {
         let dailyRaw = result.data.daily.data;
 
         let currently = {
-          date: moment.unix(currentlyRaw.time).format("ddd HH"),
+          date: currentlyRaw.time,
           summary: currentlyRaw.summary,
           icon: currentlyRaw.icon,
           precipIntensity: Math.round(currentlyRaw.precipIntensity),
@@ -98,7 +98,7 @@ const api = (app) => {
 
         let hourly = hourlyRaw.map((weather) => {
           return {
-            date: moment.unix(weather.time).format("ddd, HH:00"),
+            date: weather.time,
             summary: weather.summary,
             icon: weather.icon,
             precipIntensity: Math.round(weather.precipIntensity),
@@ -117,7 +117,7 @@ const api = (app) => {
 
         let daily = dailyRaw.map((weather) => {
           return {
-            date: moment.unix(weather.time).format("ddd DD"),
+            date: weather.time,
             summary: weather.summary,
             icon: weather.icon,
             precipIntensity: Math.round(weather.precipIntensity),

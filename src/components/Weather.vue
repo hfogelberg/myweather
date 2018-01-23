@@ -1,7 +1,7 @@
 <template>
   <div class='weather-container'>
     <h1 class="primary-header">
-      {{city}}
+      Weather in {{city}}
     </h1>
     
     <weather-card v-if="showNow" :forecast="currently" class='card'/>

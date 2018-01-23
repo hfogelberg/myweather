@@ -40,7 +40,6 @@ const actions = {
   location(context, location) {
     context.commit("setLocation", location);
     var url = "http://localhost:3000/api/locationname/" + location.lat + "/" + location.lon;
-    console.log("Calling server " + url);
     axios.get(url)
       .then((res) => {
         context.commit("setCity", res.data.name);

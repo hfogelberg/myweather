@@ -1,4 +1,5 @@
-const axios = require('axios');
+const axios = require("axios"),
+  moment = require("moment");
 
 const state = {
   currently: {},
@@ -21,16 +22,26 @@ const getters = {
 
 const mutations = {
   setCurrently: (state, payload) => {
-    console.log("SET CURRENTLY", payload)
+    // Convert time to local and format
+    payload.date = moment.unix(payload.date).local().format("ddd HH");
     state.currently = payload;
   },
   setDaily: (state, payload) => {
-    console.log("SET DAILY", payload);
-    state.daily = payload;
+    // Convert time to local and format
+    let forecasts = payload.map((forecast) => {
+      forecast.date = moment.unix(forecast.date).format("ddd DD");
+      return forecast;
+    })
+
+    state.daily = forecasts;
   },
   setHourly: (state, payload) => {
-    console.log("SET HOURLY", payload);
-    state.hourly = payload;
+    // Convert time to local and format
+    let forecasts = payload.map((forecast) => {
+      forecast.date = moment.unix(forecast.date).format("ddd, HH:00");
+      return forecast;
+    })
+    state.hourly = forecasts;
   }
 }
 
@@ -39,10 +50,10 @@ const actions = {
     var lat = this.getters.lat;
     var lon = this.getters.lon;
     var url = "http://localhost:3000/api/forecast/" + lat + "/" + lon;
-    console.log("Calling server " + url);
+
     axios.get(url)
       .then((res) => {
-        console.log("Server response", res.data);
+
         context.commit('setCurrently', res.data.currently);
         context.commit('setDaily', res.data.daily);
         context.commit('setHourly', res.data.hourly);

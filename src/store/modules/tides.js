@@ -1,4 +1,5 @@
-const axios = require("axios");
+const axios = require("axios"),
+  moment = require("moment");
 
 const state = {
   tides: []
@@ -12,7 +13,6 @@ const getters = {
 
 const mutations = {
   setTides: (state, payload) => {
-    console.log("SET TIDES", payload);
     state.tides = payload;
   }
 }
@@ -22,10 +22,15 @@ const actions = {
     let lat = this.getters.lat;
     let lon = this.getters.lon;
     var url = `http://localhost:3000/api/tides/${lat}/${lon}`;
-    console.log("Calling server " + url);
+
     axios.get(url)
       .then((res) => {
-        console.log("Server response", res.data);
+        let tideData = res.data.tides;
+        let tides = tideData.map((tide) => {
+          tide.date = moment.unix(tide.dt).local().format("ddd HH");
+          return tide;
+        });
+        context.commit("setTides", tides);
       })
       .catch((err) => {
         console.log(err);
