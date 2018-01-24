@@ -27,7 +27,7 @@ const actions = {
       .then((res) => {
         let tideData = res.data.tides;
         let tides = tideData.map((tide) => {
-          tide.date = moment.unix(tide.dt).local().format("ddd HH");
+          tide.date = moment.unix(tide.dt).local().format("ddd HH:mm");
           return tide;
         });
         context.commit("setTides", tides);

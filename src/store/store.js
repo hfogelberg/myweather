@@ -17,8 +17,8 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
-    notSearching: state => {
-      state.isSearching = false;
+    isSearching: state => {
+      state.isSearching = true;
     },
 
     toggleIsSearching: state => {
@@ -36,11 +36,11 @@ export const store = new Vuex.Store({
         lat: 0.0,
         lon: 0.0
       });
-      commit("city", "");
+      commit("setCity", "");
       commit("setSun", {});
       commit("setMoon", {});
       commit("setTides", []);
-      commit("notSearching");
+      commit("isSearching");
     },
     setIsSearching: ({
       commit

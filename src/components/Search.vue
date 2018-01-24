@@ -10,12 +10,12 @@
       </li>
     </ul>
 
-    <div v-if="isSearching">
+    <div class="searching" v-if="isSearching">
       <h2 class="heading-secondary">Checking where you are ...</h2>
       <div class="spinner"></div>
     </div>
 
-    <div class="row" v-if="hasCity">
+    <div class="row" v-else>
         <div class="col-4-12 color-red">
           <button @click="getWeather" class="btn-large btn-1">
             Weather
@@ -93,6 +93,14 @@ export default {
       justify-content: space-around;
   }
 
+  .searching {
+    margin-top: 3rem;
+
+  @media only screen and (max-width: 568px) {
+      font-size: 1.5rem;
+    }
+  }
+
   .search-location {
     width: 70vw;
     padding: .5rem;
@@ -103,6 +111,7 @@ export default {
       font-size: 2rem;
       font-weight: 400;
     }
+
     @media only screen and (min-width: 600px) {
       line-height: 5rem;
       font-size: 2.5rem;
