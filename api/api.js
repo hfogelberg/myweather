@@ -1,4 +1,5 @@
-const axios = require('axios');
+const axios = require('axios'),
+  suncalc = require('suncalc');
 
 const api = (app) => {
   app.get('/api/', (req, res) => {
@@ -8,11 +9,24 @@ const api = (app) => {
     }));
   });
 
+  app.get("/api/sunmoon/:lat/:lon", (req, res) => {
+    let lat = req.params.lat;
+    let lon = req.params.lon;
+
+    let sunTimes = suncalc.getTimes(new Date(), lat, lon);
+    let moonTimes = suncalc.getMoonIllumination(new Date(), lat, lon);
+
+    res.json({
+      sunTimes,
+      moonTimes
+    });
+  });
+
   app.get("/api/tides/:lat/:lon", (req, res) => {
     console.log("Tides API");
-    var lat = req.params.lat;
-    var lon = req.params.lon;
-    var key = process.env.WORLD_TIDES_KEY;
+    let lat = req.params.lat;
+    let lon = req.params.lon;
+    let key = process.env.WORLD_TIDES_KEY;
 
     let url = `https://www.worldtides.info/api?extremes&lat=${lat}&lon=${lon}&key=${key}`;
     axios.get(url)
@@ -28,9 +42,9 @@ const api = (app) => {
   });
 
   app.get("/api/locationname/:lat/:lon", (req, res) => {
-    var lat = req.params.lat;
-    var lon = req.params.lon;
-    var key = process.env.GOOGLE_MAPS_KEY;
+    let lat = req.params.lat;
+    let lon = req.params.lon;
+    let key = process.env.GOOGLE_MAPS_KEY;
 
     let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${key}`;
     axios.get(url)
@@ -69,9 +83,9 @@ const api = (app) => {
   })
 
   app.get("/api/forecast/:lat/:lon", (req, res) => {
-    var lat = req.params.lat;
-    var lon = req.params.lon;
-    var key = process.env.DARKSKY_KEY;
+    let lat = req.params.lat;
+    let lon = req.params.lon;
+    let key = process.env.DARKSKY_KEY;
 
     let url = `https://api.darksky.net/forecast/${key}/${lat},${lon}?exclude=flags,minutely&units=auto`;
     axios.get(url).then((result) => {
@@ -91,7 +105,7 @@ const api = (app) => {
           windSpeed: Math.round(currentlyRaw.windSpeed),
           maxWind: Math.round(currentlyRaw.windGust),
           windBearing: currentlyRaw.windBearing,
-          cloudCover: currentlyRaw.cloudCover * 100,
+          cloudCover: Math.round(currentlyRaw.cloudCover * 100),
           uvIndex: currentlyRaw.uvIndex,
           type: "CURRENTLY"
         };
@@ -109,7 +123,7 @@ const api = (app) => {
             windSpeed: Math.round(weather.windSpeed),
             maxWind: Math.round(weather.windGust),
             windBearing: weather.windBearing,
-            cloudCover: weather.cloudCover * 100,
+            cloudCover: Math.round(weather.cloudCover * 100),
             uvIndex: weather.uvIndex,
             type: "HOURLY"
           }

@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import location from './modules/location';
 import forecast from './modules/forecast';
 import tides from "./modules/tides";
+import sunMoon from "./modules/sunMoon";
 
 Vue.use(Vuex);
 
@@ -16,11 +17,31 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
-    toggleIsSearching: (state) => {
+    notSearching: state => {
+      state.isSearching = false;
+    },
+
+    toggleIsSearching: state => {
       state.isSearching = !state.isSearching
     }
   },
   actions: {
+    reset: ({
+      commit
+    }) => {
+      commit("setCurrently", {});
+      commit("setDaily", []);
+      commit("setHourly", []);
+      commit("setLocation", {
+        lat: 0.0,
+        lon: 0.0
+      });
+      commit("city", "");
+      commit("setSun", {});
+      commit("setMoon", {});
+      commit("setTides", []);
+      commit("notSearching");
+    },
     setIsSearching: ({
       commit
     }) => {
@@ -30,6 +51,7 @@ export const store = new Vuex.Store({
   modules: {
     location,
     forecast,
-    tides
+    tides,
+    sunMoon
   }
 });

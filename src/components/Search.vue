@@ -15,16 +15,23 @@
       <div class="spinner"></div>
     </div>
 
-    <div class="button-row" v-if="hasCity">
-      <button @click="getWeather" class="btn-large btn-1">
-        Weather
-      </button>
-      <button @click="getTides" class="btn-large btn-2">
-        Tides
-      </button>
-      <button @click="getSun" class="btn-large btn-3">
-        Sun and Moon Times
-      </button>
+    <div class="row" v-if="hasCity">
+        <div class="col-4-12 color-red">
+          <button @click="getWeather" class="btn-large btn-1">
+            Weather
+          </button>
+        </div>
+        <div class="col-4-12 color-blue">
+          <button @click="getTides" class="btn-large btn-2">
+            Tides
+          </button>
+        </div>
+        <div class="col-4-12 color-green">
+          <button @click="getSun" class="btn-large btn-3">
+            Sun and Moon Times
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -43,12 +50,13 @@ export default {
   },
   methods: {
     getSun() {
+      this.$store.dispatch("getSunMoon")
       this.$router.push("/sunmoon");
     },
 
     getWeather() {
-      this.$store.dispatch('getForecast');
-      this.$router.push('/weather');
+      this.$store.dispatch("getForecast");
+      this.$router.push("/weather");
     },
 
     getTides() {
@@ -57,17 +65,16 @@ export default {
     },
 
     getLocation() {
-      console.log("Get location")
+      this.$store.dispatch("reset");
       this.$store.dispatch("setIsSearching");
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position)=>{
-          console.log('Position', position);
           const location = {
             lat: position.coords.latitude,
             lon: position.coords.longitude
           };
           
-          this.$store.dispatch('location', location);
+          this.$store.dispatch("location", location);
         });
       } else {
         console.log("Can't handle geolocation");
@@ -88,12 +95,19 @@ export default {
 
   .search-location {
     width: 70vw;
-    line-height: 5rem;
-    font-size: 2.5rem;
-    font-weight: 500;
     padding: .5rem;
     text-align: center;
     border-radius: 10px;
+    @media only screen and (max-width: 599px) {
+      line-height: 4rem;
+      font-size: 2rem;
+      font-weight: 400;
+    }
+    @media only screen and (min-width: 600px) {
+      line-height: 5rem;
+      font-size: 2.5rem;
+      font-weight: 500;
+    }
   }
 
   .search-row {
@@ -108,6 +122,13 @@ export default {
     }
   }
 
+  .primary-header {
+    @media only screen and (max-width: 599px) {
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+    }
+  }
+
   .btn-gps {
     height: 5rem;
     padding: .5rem;
@@ -117,4 +138,9 @@ export default {
     height: 5rem;
   }
 
+  .row {
+    @media only screen and (max-width: 599px) {
+      margin-top: 5rem;
+    }
+  }
 </style>

@@ -1,8 +1,8 @@
 <template>
-<div>
+<div class="weather">
   <ul class="menu-bar">
     <li class="menu-bar__item">
-      <router-link to="/"             class="menu-bar__item--link">
+      <router-link to="/" class="menu-bar__item--link">
           MyWeather
       </router-link>
     </li>
@@ -10,7 +10,7 @@
       <button @click="getTides" class="btn-transparent menu-bar__item--link btn-1 btn-medium">Tides</button>
     </li>
     <li>
-      <button @click="getSunmoon" class="menu-bar__item--link btn-2 btn-medium">Sun and Moon</button>
+      <button @click="getSunmoon" class="menu-bar__item--link btn-2 btn-medium">Sun/Moon</button>
     </li>
   </ul>
 
@@ -36,14 +36,26 @@
         </li>
       </ul>
     </div>
-    
-    <ul class="button-row">
-      <li><button @click="now" class="btn-large btn-1">Now</button></li>
-      <li><button @click="hours" class="btn-large btn-2">Hours</button></li>
-      <li><button @click="days" class="btn-large btn-3">Days</button></li>
+  </div>
+
+    <ul class="footer-button-row">
+      <li>
+        <button @click="now" class="btn-medium btn-1">
+          Now
+          </button>
+        </li>
+      <li>
+        <button @click="hours" class="btn-medium btn-2">
+          Hours
+        </button>
+      </li>
+      <li>
+        <button @click="days" class="btn-medium btn-3">
+          Days
+        </button>
+      </li>
     </ul>
   </div>
-</div>
 </template>
       
       
@@ -101,38 +113,27 @@ export default {
 
 <style lang="scss" scoped>
 @import "../sass/main.scss";
+.weather {
+  max-height: 100vh;
+}
+
 .weather-container {
-    padding: 2rem;
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-}
-
-.weather-heading-main {
-    text-align: center;
-    color: $primary-color-text;
-    font-size: 4rem;
-    text-transform: uppercase;
-    animation: moveInLeft 1s ease-out;
-    letter-spacing: 0.29rem;
-}
-
-.weather-heading-sub {
-    color: $primary-color-text;
-    font-size: 2rem;
-    letter-spacing: 0.085rem;
-    display: block;
-    animation-delay: 1s;
-    animation: moveInRight 1s ease-out;
-    margin-bottom: 1.5em;
-}
-
-ul {
-    list-style: none
+    @media only screen and (min-width: 600px){
+      padding: 2rem;
+    }
 }
 
 .weather-image {
+  @media only screen and (max-width: 599px){
+    max-height: 2rem;
+  }
+  @media only screen and (min-width: 600px){
     max-height: 8rem;
+  }
 }
 </style>

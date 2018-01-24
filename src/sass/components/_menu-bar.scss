@@ -1,20 +1,36 @@
 .menu-bar {
-    width: 100%;
-    height: 6rem;
-    line-height: 6rem;
-    padding: $gutter-xsmall;
+    width: 95vw;
+    margin-right: 5vw;
+    position: fixed;
+    left: 0;
+    top: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: $gutter-small;
+    padding: $gutter-xsmall;
+    list-style: none;
+    @media only screen and (max-width: 599px) {
+        height: 4rem;
+        line-height: 4rem;
+    }
+    @media only screen and (min-width: 600px) {
+        margin-bottom: $gutter-small;
+        height: 6rem;
+        line-height: 6rem;
+    }
     &__item {
         margin-right: $gutter-small;
         &:first-child {
-            font-size: 4rem;
+            color: $secondary-text-color;
             font-weight: 400;
-            color: $primary-color-text;
+            @media only screen and (max-width: 599px) {
+                font-size: 2rem;
+            }
+            @media only screen and (min-width: 600px) {
+                font-size: 4rem;
+            }
         }
-        &--link {
+        &--link:not(:first-child) {
             flex: 0 0 auto;
             margin: 0.2em;
         }

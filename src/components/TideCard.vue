@@ -1,9 +1,9 @@
 <template>
-    <div class="horizontal-slide__wrapper--card">          
+  <div class="horizontal-slide__wrapper--card">          
     <table class="forecast">
       <tr>
         <td>
-            Image
+            <img :src = "'../public/icons/' + tide.type + '.png'" />
         </td>
         <td>
           <h3>
@@ -20,16 +20,31 @@
         <td>{{tide.type}}</td>
       </tr>
     </table>
-</div>
+  </div>
 
 </template>
 
 <script>
 export default {
-    props: ["tide"]
+  props: ["tide"]
 }
 </script>
 
 <style lang="scss" scoped>
 @import "../sass/main.scss";
+
+.horizontal-slide__wrapper--card {
+  margin-top: 6rem;
+}
+.forecast {
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+  font-size: 1.8rem;
+  tr:first-child {
+    line-height: 8rem;
+    font-size: 2.2rem;
+    font-weight: 400;
+  }
+}
 </style>

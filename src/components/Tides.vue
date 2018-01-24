@@ -2,7 +2,7 @@
 <div>
   <ul class="menu-bar">
     <li class="menu-bar__item">
-      <router-link to="/"             class="menu-bar__item--link">
+      <router-link to="/" class="menu-bar__item--link">
           MyWeather
       </router-link>
     </li>
@@ -38,16 +38,14 @@
 @import "../sass/main.scss";
 
 .tides-container {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+  margin-top: 5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
-ul {
-  list-style: none;
-}
 </style>
 
 <script>
