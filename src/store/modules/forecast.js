@@ -12,7 +12,6 @@ const getters = {
     return state.currently;
   },
   daily: state => {
-    console.log("Get daily", state.daily);
     return state.daily;
   },
   hourly: state => {

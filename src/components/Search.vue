@@ -87,10 +87,6 @@ export default {
   },
 
   methods: {
-    getAddressData(addressData, placeResultData, id) {
-      console.log("*** ADDRESS *** " + addressData);
-    },
-
     getSun() {
       this.$store.dispatch("getSunMoon")
       this.$router.push("/sunmoon");

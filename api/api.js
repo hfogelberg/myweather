@@ -23,7 +23,6 @@ const api = (app) => {
   });
 
   app.get("/api/tides/:lat/:lon", (req, res) => {
-    console.log("Tides API");
     let lat = req.params.lat;
     let lon = req.params.lon;
     let key = process.env.WORLD_TIDES_KEY;

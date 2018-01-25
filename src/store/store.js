@@ -13,13 +13,11 @@ export const store = new Vuex.Store({
   },
   getters: {
     isSearching: state => {
-      console.log("Get isSearching " + state.isSearching);
       return state.isSearching;
     }
   },
   mutations: {
     isSearching: (state, payload) => {
-      console.log("Setting isSearching " + payload);
       state.isSearching = payload
     }
   },

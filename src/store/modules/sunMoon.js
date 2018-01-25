@@ -22,7 +22,6 @@ const mutations = {
   },
 
   setMoon: (state, payload) => {
-    console.log("SET MOON", payload);
     state.moon = payload;
   }
 }
@@ -34,7 +33,6 @@ const actions = {
     var url = "http://localhost:3000/api/sunmoon/" + lat + "/" + lon;
     axios.get(url)
       .then((res) => {
-        console.log("***** SunMoon *****", res.data);
         let sun = res.data.sunTimes;
         let moon = res.data.moonTimes;
         let sunTimes = {
@@ -48,8 +46,6 @@ const actions = {
         let moonTimes = {
           phase: Math.round(moon.phase * 100)
         };
-
-        console.log("MOONTIMES", moonTimes);
 
         context.commit("setSun", sunTimes);
         context.commit("setMoon", moonTimes);
