@@ -46,6 +46,7 @@ const mutations = {
 
 const actions = {
   geoAndCity(context, location) {
+    console.log("Set geo and city", location);
     context.commit("setLocation", location.geometry);
     context.commit("setCity", location.city);
     context.commit("setHasCity", true);

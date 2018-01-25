@@ -12,7 +12,7 @@
         </button>
       </li>
       <li>
-        <button @click="getTides"   class="btn-transparent menu-bar__item--link btn-1 btn-medium">
+        <button @click="getTides" class="btn-transparent menu-bar__item--link btn-1 btn-medium">
         Tides
         </button>
       </li>
@@ -23,31 +23,39 @@
         Sun and Moon in <br>
         {{city}}
       </h2>
-      <div class="sunmoon-card">     
-          <div class="row">
-            <div class="col-4-12">
-              <img class="image" src="../../public/icons/sunrise.svg">
-            </div>
-            <div class="col-8-12">
-              <h3 class="tertiary-header sun-heder">{{sun.sunrise}}</h3>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-4-12">
+      <div class="sunmoon-card"> 
+        <table class="forecast">
+          <tr>
+            <td>
+              <img class="image" src="../../public/icons/sunrise.svg" >
+            </td>
+            <td>
+              <div class="sun-label">
+                {{sun.sunrise}}
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
               <img class="image" src="../../public/icons/sunset.svg">
-            </div>
-            <div class="col-8-12">
-              <h3 class="tertiary-header sun-heder">{{sun.sunset}}</h3>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-4-12">
+            </td>
+            <td>
+              <div class="sun-label">
+                {{sun.sunset}}
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
               <img class="image" src="../../public/icons/clear-night.svg">
-            </div>
-            <div class="col-8-12">
-              <h3 class="tertiary-header sun-heder">{{moon.phase}} %</h3>
-            </div>
-          </div>
+            </td>
+            <td>
+              <div class="sun-label">
+                {{moon.phase}} %
+              </div>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
@@ -110,7 +118,8 @@ export default {
   }
 
   @media only screen and (min-width: 601px){
-    margin-left: 8vw;
+    width: 40vw;
+    margin-left: 30vw;
     margin-top: 8rem;
   }
 }
@@ -125,20 +134,38 @@ export default {
   }
 }
 
-.sun-heder {
+.sun-label {
   text-align: left;
 
-  @media only screen and (min-width: 601px){
+  @media only screen and (max-width: 320px) {
+    font-size: 2.5rem;
+    font-weight: 400;
+  }
+
+  @media only screen and (min-width: 321px) and (max-width: 599px) {
+    font-size: 3.2rem;
+    font-weight: 300;
+  }
+
+  @media only screen and (min-width: 600px){
     font-size: 3.5rem;
+    font-weight: 700;
   }
 }
 
-.image {
-  @media only screen and (max-width: 599px){
-    max-height: 2rem;
+td > .image {
+  @media only screen and (max-width: 320px) and (max-width: 599px) {
+    height: 4rem;
+    padding: .5rem 2rem .5rem 1rem;
+  }
+
+  @media only screen and (min-width: 321px) and (max-width: 599px) {
+    height: 5rem;
+    padding: .5rem 2rem 1rem 2rem;
   }
   @media only screen and (min-width: 600px){
-    max-height: 8rem;
+    height: 8rem;
+    padding: .5rem 2rem .5rem 1rem;
   }
 }
 

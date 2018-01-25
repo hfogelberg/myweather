@@ -37,7 +37,7 @@
         </div>
         <div class="col-4-12 color-green">
           <button @click="getSun" class="btn-large btn-3">
-            Sun and Moon Times
+            Sun/Times
           </button>
         </div>
       </div>
@@ -72,8 +72,8 @@ export default {
 
       const location = {
         geometry: {
-          lat: place.geometry.location.lat(),
-          lon: place.geometry.location.lng()
+          lat,
+          lon
         },
         city: city
       };

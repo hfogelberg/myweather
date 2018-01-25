@@ -13,16 +13,27 @@
 }
 
 .btn-large {
-    min-width: 18rem;
-    height: 6rem;
-    font-weight: 400;
     border-radius: 10px;
     margin: 0 1rem;
-    @media only screen and (max-width: 599px) {
+    @media only screen and (max-width: 320px) {
         font-size: 1.6rem;
+        width: 8rem;
+        height: 4rem;
+        font-weight: 400;
     }
+
+    @media only screen and (min-width: 312px) and (max-width: 599px) {
+        font-size: 2rem;
+        width: 10rem;
+        height: 5rem;
+        font-weight: 400;
+    }
+
     @media only screen and (min-width: 600px) {
-      font-size: 2rem;
+        font-size: 2rem;    
+        min-width: 18rem;
+        height: 6rem;
+        font-weight: 400;
     }
 }
 

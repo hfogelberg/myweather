@@ -27,6 +27,7 @@ const actions = {
       .then((res) => {
         let tideData = res.data.tides;
         let tides = tideData.map((tide) => {
+          tide.height = tide.height.toFixed(2);
           tide.date = moment.unix(tide.dt).local().format("ddd HH:mm");
           return tide;
         });
