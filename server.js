@@ -2,17 +2,12 @@ var express = require('express'),
   app = express(),
   cors = require('cors'),
   bodyParser = require('body-parser'),
-  {
-    api
-  } = require('./api/api'),
-  settings = require('./config.js'),
+  { api } = require('./api/api'),
   port = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', express.static(__dirname + '/'));
 api(app);
 

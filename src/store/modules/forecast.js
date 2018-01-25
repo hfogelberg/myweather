@@ -1,6 +1,6 @@
 import axios from "axios";
 import  moment from "moment";
-import { API_ROOT_URL } from "../../settings";
+import { API_ROOT_URL } from "./storeConfig.js";
 
 const state = {
   currently: {},
@@ -50,10 +50,10 @@ const actions = {
     var lat = this.getters.lat;
     var lon = this.getters.lon;
     var url = `${API_ROOT_URL}/forecast/${lat}/${lon}`;
-
+    console.log(url);
+    
     axios.get(url)
       .then((res) => {
-
         context.commit('setCurrently', res.data.currently);
         context.commit('setDaily', res.data.daily);
         context.commit('setHourly', res.data.hourly);

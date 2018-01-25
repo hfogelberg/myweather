@@ -5,8 +5,9 @@ dist/
 npm-debug.log
 yarn-error.log
 tmp/
+
 playground/
-config.js
+api/apiConfig.js
 
 # Editor directories and files
 .idea

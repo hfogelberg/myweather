@@ -1,6 +1,6 @@
 {
-  "name": "pip",
-  "description": "The book about Little Pip",
+  "name": "myweather",
+  "description": "Vue app for weather, tides, sun and moon",
   "version": "1.0.0",
   "author": "Henrik Fogelberg <henrik.gogelberg@gmail.com>",
   "private": true,
@@ -21,7 +21,7 @@
     "vuex": "^3.0.1"
   },
   "now": {
-    "alias": "pip"
+    "alias": "myweather"
   },
   "browserslist": [
     "> 1%",

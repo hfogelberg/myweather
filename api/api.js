@@ -1,5 +1,10 @@
 const axios = require('axios'),
-  suncalc = require('suncalc');
+      { 
+        GOOGLE_MAPS_KEY, 
+        WORLD_TIDES_KEY, 
+        DARKSKY_KEY 
+      } = require('./apiConfig.js'),
+      suncalc = require('suncalc');
 
 const api = (app) => {
   app.get('/api/', (req, res) => {
@@ -25,9 +30,8 @@ const api = (app) => {
   app.get("/api/tides/:lat/:lon", (req, res) => {
     let lat = req.params.lat;
     let lon = req.params.lon;
-    let key = process.env.WORLD_TIDES_KEY;
 
-    let url = `https://www.worldtides.info/api?extremes&lat=${lat}&lon=${lon}&key=${key}`;
+    let url = `https://www.worldtides.info/api?extremes&lat=${lat}&lon=${lon}&key=${WORLD_TIDES_KEY}`;
     axios.get(url)
       .then((result) => {
         let tides = result.data.extremes;
@@ -43,9 +47,8 @@ const api = (app) => {
   app.get("/api/locationname/:lat/:lon", (req, res) => {
     let lat = req.params.lat;
     let lon = req.params.lon;
-    let key = process.env.GOOGLE_MAPS_KEY;
 
-    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${key}`;
+    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${GOOGLE_MAPS_KEY}`;
     axios.get(url)
       .then((result) => {
         let addressComponents = result.data.results[0].address_components;
@@ -84,9 +87,8 @@ const api = (app) => {
   app.get("/api/forecast/:lat/:lon", (req, res) => {
     let lat = req.params.lat;
     let lon = req.params.lon;
-    let key = process.env.DARKSKY_KEY;
 
-    let url = `https://api.darksky.net/forecast/${key}/${lat},${lon}?exclude=flags,minutely&units=auto`;
+    let url = `https://api.darksky.net/forecast/${DARKSKY_KEY}/${lat},${lon}?exclude=flags,minutely&units=auto`;
     axios.get(url).then((result) => {
         let currentlyRaw = result.data.currently;
         let hourlyRaw = result.data.hourly.data;

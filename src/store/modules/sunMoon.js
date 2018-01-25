@@ -1,6 +1,6 @@
 import axios from "axios";
 import moment from "moment";
-import { API_ROOT_URL } from "../../settings";
+import { API_ROOT_URL } from "./storeConfig.js";
 
 const state = {
   sun: {},

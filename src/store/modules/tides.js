@@ -1,5 +1,6 @@
-const axios = require("axios"),
-  moment = require("moment");
+import axios from "axios";
+import moment from "moment";
+import { API_ROOT_URL } from "./storeConfig.js";
 
 const state = {
   tides: []
@@ -21,7 +22,7 @@ const actions = {
   getTides(context) {
     let lat = this.getters.lat;
     let lon = this.getters.lon;
-    var url = `http://localhost:3000/api/tides/${lat}/${lon}`;
+    var url = `${API_ROOT_URL}/tides/${lat}/${lon}`;
 
     axios.get(url)
       .then((res) => {

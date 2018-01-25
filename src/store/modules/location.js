@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_ROOT_URL } from "../../settings";
+import { API_ROOT_URL } from "./storeConfig.js";
 
 const state = {
   lat: 0.0,
@@ -56,6 +56,7 @@ const actions = {
   location(context, location) {
     context.commit("setLocation", location);
     const url = `${API_ROOT_URL}/locationname/${location.lat}/${location.lon}`;
+    console.log(url);
     axios.get(url)
       .then((res) => {
         context.commit("setCity", res.data.name);

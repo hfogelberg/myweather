@@ -8,8 +8,6 @@ const API_ROOT_URL = isLocal
   ? "http://localhost:3000/api"
   : "https://myweather.henrikfogelberg.com/api";
 
-console.log("API endpoint: " + API_ROOT_URL);
-
 module.exports = {
   API_ROOT_URL
 };

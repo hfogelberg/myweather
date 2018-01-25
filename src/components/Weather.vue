@@ -63,7 +63,7 @@
       
 <script>
 import {mapGetters} from "vuex";
-import WeatherCard from './Weathercard.vue';
+import WeatherCard from './WeatherCard.vue';
 
 export default {
   data() {
