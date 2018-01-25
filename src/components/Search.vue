@@ -9,7 +9,6 @@
                 class="search-location"
                 onfocus="value = ''" 
                 v-model="city"
-                v-on:placechanged="getAddressData"
                 type="text"/>
       </li>
       <li>

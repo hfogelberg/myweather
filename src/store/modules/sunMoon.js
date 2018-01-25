@@ -1,5 +1,6 @@
-const axios = require("axios"),
-  moment = require("moment");
+import axios from "axios";
+import moment from "moment";
+import { API_ROOT_URL } from "../../settings";
 
 const state = {
   sun: {},
@@ -30,7 +31,7 @@ const actions = {
   getSunMoon(context) {
     var lat = this.getters.lat;
     var lon = this.getters.lon;
-    var url = "http://localhost:3000/api/sunmoon/" + lat + "/" + lon;
+    var url = `${API_ROOT_URL}/sunmoon/${lat}/${lon}`;
     axios.get(url)
       .then((res) => {
         let sun = res.data.sunTimes;
