@@ -3,7 +3,7 @@
   <ul class="menu-bar">
     <li class="menu-bar__item">
       <router-link to="/" class="menu-bar__item--link menu-title">
-        <h3 class="tertiary-header">MyWeather</h3>
+        <h3 class="tertiary-header menu-header">MyWeather</h3>
       </router-link>
     </li>
     <li>

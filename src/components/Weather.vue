@@ -130,6 +130,12 @@ export default {
     }
 }
 
+.horizontal-slide {
+  @media only screen and (min-width: 600px){
+    margin-top: 6rem;
+  }
+}
+
 .weather-image {
   @media only screen and (max-width: 599px){
     max-height: 2rem;

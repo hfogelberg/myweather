@@ -6,8 +6,8 @@
                 <img class="weather-image"v-bind:src="'../../public/icons/' + forecast.icon + '.svg'">
             </td>
             <td>
-                <h3>
-                {{forecast.date}}<br>
+                <h3 class="weather-date">
+                    {{forecast.date}}<br>
                 </h3>
             </td>
         </tr>
@@ -67,9 +67,18 @@ tr, td {
     }
 }
 
+.weather-date {
+    @media only screen and (min-width: 320px) {
+        font-size: 2.2rem;
+    }
+}
+
 .weather-image {
     @media only screen and (max-width: 320px) {
         height: 5rem;
+    }
+    @media only screen and (min-width: 320px) {
+        height: 8rem;
     }
 }
 </style>

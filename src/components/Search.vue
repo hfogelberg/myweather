@@ -95,6 +95,19 @@ export default {
       justify-content: space-around;
   }
 
+  .search-row {
+    @media only screen and (min-width: 321px) and (max-width: 400px) {
+      margin-top: 1rem;
+    }
+    @media only screen and (min-width: 401px) and (max-width: 600px) {
+      margin-bottom: 2rem;
+    }
+    @media only screen and (min-width: 601px) {
+      margin-top: 6rem;
+      margin-bottom: 6rem;
+    }
+  }
+
   .searching {
     margin-top: 3rem;
 
@@ -156,5 +169,6 @@ export default {
 
   .button-row {
     margin-top: 5rem;
+    backgroun-color: red;
   }
 </style>

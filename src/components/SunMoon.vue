@@ -26,7 +26,7 @@
               <img class="image" src="../../public/icons/sunrise.svg">
             </div>
             <div class="col-8-12">
-              <h3 class="tertiary-header">{{sun.sunrise}}</h3>
+              <h3 class="tertiary-header sun-heder">{{sun.sunrise}}</h3>
             </div>
           </div>
           <div class="row">
@@ -34,7 +34,7 @@
               <img class="image" src="../../public/icons/sunset.svg">
             </div>
             <div class="col-8-12">
-              <h3 class="tertiary-header">{{sun.sunset}}</h3>
+              <h3 class="tertiary-header sun-heder">{{sun.sunset}}</h3>
             </div>
           </div>
           <div class="row">
@@ -42,7 +42,7 @@
               <img class="image" src="../../public/icons/clear-night.svg">
             </div>
             <div class="col-8-12">
-              <h3 class="tertiary-header">{{moon.phase}} %</h3>
+              <h3 class="tertiary-header sun-heder">{{moon.phase}} %</h3>
             </div>
           </div>
       </div>
@@ -81,7 +81,6 @@ export default {
 
 .sun-row {
   color: black;
-  background-color: orange;
 }
 
 .sunmoon-card {
@@ -94,10 +93,23 @@ export default {
   border-radius: 5px;
   background-color: $accent-color;
   box-shadow: 0 10px 20px rgba($color-black, 0.2);
-  margin-right: 1rem;
   width: 70vw;
-  margin-left: 10vw;
-  margin-right: 10vw;
+
+  @media only screen and (max-width: 320px){
+      margin-left: 8vw;
+      margin-top: 6rem;
+  }
+
+  @media only screen and (min-width: 321px) and (max-width: 600px){
+    width: 70vw;
+    margin-left: 8vw;
+    margin-top: 6rem;
+  }
+
+  @media only screen and (min-width: 601px){
+    margin-left: 8vw;
+    margin-top: 8rem;
+  }
 }
 
 .row {
@@ -110,8 +122,12 @@ export default {
   }
 }
 
-.tertiary-header {
+.sun-heder {
   text-align: left;
+
+  @media only screen and (min-width: 601px){
+    font-size: 3.5rem;
+  }
 }
 
 .image {
