@@ -1,6 +1,6 @@
 <template>    
   <div class="search-container">
-    <h1 class="primary-header">My Weather</h1>
+    <h1 class="primary-header gradient-text">My Weather</h1>
     <ul class="search-row">
       <li><input type="text" class="search-location" v-model="city"></li>
       <li>
