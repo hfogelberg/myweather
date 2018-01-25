@@ -1,9 +1,9 @@
 <template>
-<div>
+<div class="tides">
   <ul class="menu-bar">
     <li class="menu-bar__item">
-      <router-link to="/" class="menu-bar__item--link">
-          MyWeather
+      <router-link to="/" class="menu-bar__item--link menu-title">
+        <h3 class="tertiary-header">MyWeather</h3>
       </router-link>
     </li>
     <li>
@@ -37,13 +37,19 @@
 <style lang="scss">
 @import "../sass/main.scss";
 
+.tides {
+  max-height: 100vh;
+}
+
 .tides-container {
-  margin-top: 5rem;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    @media only screen and (min-width: 600px){
+      padding: 2rem;
+    }
 }
 
 </style>

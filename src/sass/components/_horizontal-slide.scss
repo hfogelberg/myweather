@@ -18,15 +18,26 @@
             border-radius: 5px;
             background-color: $accent-color;
             box-shadow: 0 10px 20px rgba($color-black, 0.2);
-            @media only screen and (max-width: 599px) {
+            @media only screen and (max-width: 320px) {
+                font-size: 1.4rem;
+                max-height: 50vh;
                 width: 70vw;
                 margin-top: .5rem;
                 margin-right: 1rem;
                 padding-left: 1rem;
                 padding-right: 1rem;
             }
+            @media only screen and (min-width: 321px) and (max-width: 599px) {
+                width: 60vw;
+                max-height: 50vh;
+                margin-top: 1rem;
+                padding-left: 2rem;
+                padding-right: 2rem;
+                margin-right: 1rem;
+            }
             @media only screen and (min-width: 600px) {
-                width: 25vw;
+                width: 30vw;
+                max-height: 50vh;
                 margin-top: 1rem;
                 padding-left: 2rem;
                 padding-right: 2rem;

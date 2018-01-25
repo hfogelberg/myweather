@@ -3,7 +3,7 @@
   <ul class="menu-bar">
     <li class="menu-bar__item">
       <router-link to="/" class="menu-bar__item--link">
-          MyWeather
+        <h3 class="tertiary-header">MyWeather</h3>
       </router-link>
     </li>
     <li>
@@ -22,7 +22,7 @@
     <weather-card v-if="showNow" :forecast="currently" class='card'/>
 
     <div class="horizontal-slide" v-if="showDay">
-      <ul class="horizontal-slide__wrapper">
+      <ul class="horizontal-slide__wrapper" ref="days">
         <li v-for="forecast in daily">
           <weather-card :forecast="forecast" class='card'/>
         </li>
@@ -30,7 +30,7 @@
     </div>
 
     <div class="horizontal-slide" v-if="showHour">
-      <ul class="horizontal-slide__wrapper">
+      <ul class="horizontal-slide__wrapper" ref="hours">
         <li v-for="forecast in hourly">
           <weather-card :forecast="forecast" class='card'/>
         </li>
@@ -83,12 +83,14 @@ export default {
           this.showNow=false;
           this.showDay=false;
           this.showHour=true;
+          this.$refs.hours.scrollLeft = 0;
       },
       
       days() {
           this.showNow=false;
           this.showDay=true;
           this.showHour=false;
+          this.$refs.days.scrollLeft = 0;
       },
 
       getTides() {

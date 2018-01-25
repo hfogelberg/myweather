@@ -32,7 +32,15 @@ const mutations = {
   },
   setCity: (state, payload) => {
     state.city = payload;
-    state.hasCity = true;
+
+    if (payload) {
+      state.hasCity = false;
+    } else {
+      state.hasCity = true;
+    }
+  },
+  setHasCity: (state, payload) => {
+    state.hasCity = payload;
   }
 }
 
@@ -43,7 +51,8 @@ const actions = {
     axios.get(url)
       .then((res) => {
         context.commit("setCity", res.data.name);
-        context.commit("toggleIsSearching");
+        context.commit("setHasCity", true);
+        context.commit("isSearching", false);
       })
       .catch((err) => {
         console.log(err);

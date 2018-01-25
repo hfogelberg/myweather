@@ -21,8 +21,6 @@
     &__item {
         margin-right: $gutter-small;
         &:first-child {
-            color: $secondary-text-color;
-            font-weight: 400;
             @media only screen and (max-width: 599px) {
                 font-size: 2rem;
             }
@@ -38,4 +36,9 @@
             margin-right: auto;
         }
     }
+}
+
+.menu-bar-title {
+    color: $color-amber;
+    font-weight: 400;
 }

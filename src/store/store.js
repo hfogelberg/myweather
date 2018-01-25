@@ -13,39 +13,34 @@ export const store = new Vuex.Store({
   },
   getters: {
     isSearching: state => {
+      console.log("Get isSearching " + state.isSearching);
       return state.isSearching;
     }
   },
   mutations: {
-    isSearching: state => {
-      state.isSearching = true;
-    },
-
-    toggleIsSearching: state => {
-      state.isSearching = !state.isSearching
+    isSearching: (state, payload) => {
+      console.log("Setting isSearching " + payload);
+      state.isSearching = payload
     }
   },
   actions: {
-    reset: ({
-      commit
-    }) => {
-      commit("setCurrently", {});
-      commit("setDaily", []);
-      commit("setHourly", []);
-      commit("setLocation", {
-        lat: 0.0,
-        lon: 0.0
-      });
-      commit("setCity", "");
-      commit("setSun", {});
-      commit("setMoon", {});
-      commit("setTides", []);
-      commit("isSearching");
+    reset: ( context) => {
+      context.commit("setCurrently", {});
+      context.commit("setDaily", []);
+      context.commit("setHourly", []);
+      context.commit("setLocation", {lat: 0.0, lon: 0.0 });
+      context.commit("setCity", "");
+      context.commit("setSun", {});
+      context.commit("setMoon", {});
+      context.commit("setTides", []);
+      context.commit("isSearching", false);
+      context.commit("setHasCity", false);
     },
-    setIsSearching: ({
-      commit
-    }) => {
-      commit("toggleIsSearching");
+    setIsSearching: (context, isSearching) => {
+      context.commit("isSearching", isSearching);
+    },
+    setHasCity: (context, hasCity) => {
+      context.commit("setHasCity", false);
     }
   },
   modules: {

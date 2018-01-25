@@ -10,12 +10,12 @@
       </li>
     </ul>
 
-    <div class="searching" v-if="isSearching">
-      <h2 class="heading-secondary">Checking where you are ...</h2>
+    <div class="searching" v-show="isSearching">
+      <div class="searching__text">Checking where you are ...</div>
       <div class="spinner"></div>
     </div>
 
-    <div class="row" v-else>
+    <div class="row button-row" v-show="hasCity">
         <div class="col-4-12 color-red">
           <button @click="getWeather" class="btn-large btn-1">
             Weather
@@ -66,7 +66,9 @@ export default {
 
     getLocation() {
       this.$store.dispatch("reset");
-      this.$store.dispatch("setIsSearching");
+      this.$store.dispatch("setIsSearching", true);
+      this.$store.dispatch("setHasCity", false);
+      
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position)=>{
           const location = {
@@ -96,8 +98,13 @@ export default {
   .searching {
     margin-top: 3rem;
 
-  @media only screen and (max-width: 568px) {
-      font-size: 1.5rem;
+    &__text {
+      @media only screen and (max-width: 320px) {
+        font-size: 1.5rem;
+      }
+       @media only screen and (min-width: 330px) and (max-width: 375px) {
+        font-size: 2rem;
+      }
     }
   }
 
@@ -147,9 +154,7 @@ export default {
     height: 5rem;
   }
 
-  .row {
-    @media only screen and (max-width: 599px) {
-      margin-top: 5rem;
-    }
+  .button-row {
+    margin-top: 5rem;
   }
 </style>

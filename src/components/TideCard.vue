@@ -1,14 +1,15 @@
 <template>
   <div class="horizontal-slide__wrapper--card">          
     <table class="forecast">
-      <tr>
-        <td>
-            <img :src = "'../public/icons/' + tide.type + '.png'" />
-        </td>
-        <td>
+      <tr>        
+        <td colspan="2">
           <h3>
-          {{tide.date}}
+            {{tide.date}}
           </h3>
+        </td>
+      <tr>
+        <td colspan="2">
+            <img :src = "'../public/icons/' + tide.type + '.png'" />
         </td>
       </tr>
       <tr>
@@ -36,6 +37,7 @@ export default {
 .horizontal-slide__wrapper--card {
   margin-top: 6rem;
 }
+
 .forecast {
   height: 100%;
   width: 100%;
@@ -46,5 +48,11 @@ export default {
     font-size: 2.2rem;
     font-weight: 400;
   }
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  padding: 1rem;
 }
 </style>
