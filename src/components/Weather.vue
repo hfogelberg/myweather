@@ -16,7 +16,8 @@
 
   <div class='weather-container'>
     <h2 class="secondary-header">
-      Weather in {{city}}
+      Weather in <br>
+      {{city}}
     </h2>
     
     <weather-card v-if="showNow" :forecast="currently" class='card'/>

@@ -16,7 +16,8 @@
 
   <div class='tides-container'>
     <h2 class="secondary-header">
-      Tides in {{city}}
+      Tides in <br>
+      {{city}}
     </h2>
 
     <div class="horizontal-slide">

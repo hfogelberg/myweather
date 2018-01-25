@@ -19,7 +19,10 @@
     </ul>
 
     <div class='sunmmon-container'>
-      <h2 class="secondary-header">Sun and Moon</h2>
+      <h2 class="secondary-header">
+        Sun and Moon in <br>
+        {{city}}
+      </h2>
       <div class="sunmoon-card">     
           <div class="row">
             <div class="col-4-12">
@@ -55,7 +58,7 @@ import {mapGetters} from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["sun", "moon"])
+    ...mapGetters(["sun", "moon", "city"])
   },
 
   methods: {
@@ -97,7 +100,7 @@ export default {
 
   @media only screen and (max-width: 320px){
       margin-left: 8vw;
-      margin-top: 6rem;
+      margin-top: 5rem;
   }
 
   @media only screen and (min-width: 321px) and (max-width: 600px){
@@ -140,6 +143,6 @@ export default {
 }
 
 ul {
-    list-style: none
+  list-style: none
 }
 </style>
