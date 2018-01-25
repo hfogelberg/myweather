@@ -2,7 +2,16 @@
   <div class="search-container">
     <h1 class="primary-header gradient-text">My Weather</h1>
     <ul class="search-row">
-      <li><input type="text" class="search-location" v-model="city"></li>
+
+      <li>
+        <input ref="autocomplete" 
+                placeholder="Search" 
+                class="search-location"
+                onfocus="value = ''" 
+                v-model="city"
+                v-on:placechanged="getAddressData"
+                type="text"/>
+      </li>
       <li>
         <button @click="getLocation" class="btn-transparent btn-gps"> 
           <img src="/public/icons/gps.svg" class="img-gps"/>
@@ -38,17 +47,50 @@
 
 <script>
 import {mapGetters} from "vuex";
+import axios from "axios";
+
 export default {
   data() {
-    return {
-      hasLocation: false
+    return { 
+      hasLocation: false,
+      autocomplete: null,
     }
+  },
+
+  mounted() {
+    this.autocomplete = new google.maps.places.Autocomplete(
+      (this.$refs.autocomplete),
+      {types: ['geocode']}
+    );
+
+    this.autocomplete.addListener('place_changed', () => {
+      let place = this.autocomplete.getPlace();
+      let ac = place.address_components;
+      let lat = place.geometry.location.lat();
+      let lon = place.geometry.location.lng();
+      let city = ac[0]["short_name"];
+
+      const location = {
+        geometry: {
+          lat: place.geometry.location.lat(),
+          lon: place.geometry.location.lng()
+        },
+        city: city
+      };
+          
+      this.$store.dispatch("geoAndCity", location);
+    });
   },
 
   computed: {
   ...mapGetters(["city", "hasCity", "isSearching"])
   },
+
   methods: {
+    getAddressData(addressData, placeResultData, id) {
+      console.log("*** ADDRESS *** " + addressData);
+    },
+
     getSun() {
       this.$store.dispatch("getSunMoon")
       this.$router.push("/sunmoon");

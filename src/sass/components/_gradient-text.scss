@@ -1,0 +1,13 @@
+  .gradient-text {
+    text-align: center;
+    text-transform: uppercase;
+    background-image: linear-gradient(to right, $secondary-text-color, $primary-color-text);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    @media only screen and (min-width: 321px) {
+      letter-spacing: 0.15rem;
+    }
+  }

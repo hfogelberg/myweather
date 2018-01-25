@@ -45,6 +45,13 @@ const mutations = {
 }
 
 const actions = {
+  geoAndCity(context, location) {
+    context.commit("setLocation", location.geometry);
+    context.commit("setCity", location.city);
+    context.commit("setHasCity", true);
+    context.commit("isSearching", false);
+  },
+
   location(context, location) {
     context.commit("setLocation", location);
     var url = "http://localhost:3000/api/locationname/" + location.lat + "/" + location.lon;
