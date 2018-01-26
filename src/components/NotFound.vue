@@ -39,7 +39,7 @@ export default {
 }
 
 .secondary-header {
-  color: #e53935;
+  color: $warning-color;
 }
 
 .paragraph {

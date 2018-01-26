@@ -111,8 +111,11 @@ const api = (app) => {
           type: "CURRENTLY"
         };
 
-        let hourly = hourlyRaw.map((weather) => {
-          return {
+      let hourly = [];
+      for (let j = 0; j < hourlyRaw.length; j += 3) {
+        let weather = hourlyRaw[j]
+        hourly.push(
+          {
             date: weather.time,
             summary: weather.summary,
             icon: weather.icon,
@@ -128,7 +131,8 @@ const api = (app) => {
             uvIndex: weather.uvIndex,
             type: "HOURLY"
           }
-        });
+        );
+      }
 
         let daily = dailyRaw.map((weather) => {
           return {
