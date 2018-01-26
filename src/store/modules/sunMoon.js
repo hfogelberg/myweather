@@ -21,6 +21,8 @@ const mutations = {
 
 const actions = {
   getSunMoon(context) {
+    console.log("getSunMoon");
+    
     var lat = this.getters.lat;
     var lon = this.getters.lon;
     var url = `${API_ROOT_URL}/sunmoon/${lat}/${lon}`;

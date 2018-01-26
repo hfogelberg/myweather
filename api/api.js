@@ -7,6 +7,11 @@ const {
         parseAddress} = require("./utils/formatData");
 const {config} = require("./config.js");
 
+const GOOGLE_MAPS_KEY = "AIzaSyBKz2rPCqEm4XguOun_Jn8Ts4EOFSoT9MU";
+const WORLD_TIDES_KEY = "f1c67376-3200-41db-86c3-8334b6f81106";
+const DARKSKY_KEY = "dd7aee29471de7467a81eb91c6be98d9";
+const APIXU_KEY = "daf06d640a404f95b87140505182301";
+
 const api = (app) => {
   app.get("/api/", (req, res) => {
     res.setHeader("Content-Type", "application/json");
@@ -24,6 +29,9 @@ const api = (app) => {
          .then((result) => {
            let forecasts = result.data.forecast;
            let astroTimes = formatSunMoon(forecasts, lat, lon);
+
+           console.log(astroTimes);
+           
            res.setHeader("Content-Type", "application/json");
            res.send(JSON.stringify({ astroTimes }));
          })
@@ -76,7 +84,7 @@ const api = (app) => {
     let lat = req.params.lat;
     let lon = req.params.lon;
 
-    let url = `https://api.darksky.net/forecast/${config.DARKSKY_KEY}/${lat},${lon}?exclude=flags,minutely&units=si`;
+    let url = `https://api.darksky.net/forecast/${DARKSKY_KEY}/${lat},${lon}?exclude=flags,minutely&units=si`;
 
     axios.get(url).then((result) => {
       let currently = formatCurrently(result.data.currently);

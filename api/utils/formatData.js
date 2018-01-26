@@ -104,6 +104,24 @@ const formatSunMoon = (forecasts, lat, lon) => {
 
     astroTimes.date = moment(forecast.date_epoch).format("ddd DD");
     illumination = suncalc.getMoonIllumination(forecast.date_epoch, lat, lon);
+
+    switch(illumination) {
+      case illumination<10:
+        astroTimes.moonImage = "../public/icons/new-moon.svg";
+        break;
+      case illumination<40:
+        astroTimes.moonImage = "../public/icons/quarter-moon.svg";
+        break;
+      case illumination<60:
+        astroTimes.moonImage = "../public/icons/half-moon.svg";
+        break;
+      case illumination<90:
+        astroTimes.moonImage = "../public/icons/three-quarter-moon.svg";
+        break;
+      default:
+        astroTimes.moonImage = "../public/icons/full-moon.svg";
+    }
+    
     astroTimes.fraction = Math.round(illumination.fraction * 100);
 
     if (astro.sunrise.includes("PM")) {

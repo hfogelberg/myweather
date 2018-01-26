@@ -20,9 +20,6 @@
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
-  "now": {
-    "alias": "myweather"
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",

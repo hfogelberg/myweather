@@ -1,0 +1,24 @@
+<?xml version='1.0' standalone='no'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width='50.000000' height='50.000000' version='1.1' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<marker id='ArrowFillLeft' viewBox='0 0 10 10' refX='5' refY='5'  
+			 markerUnits='strokeWidth' markerWidth='8' markerHeight='6' orient='auto'>
+			 <path d='M 10 0 L 0 5 L 10 10 z' />
+		</marker>
+		<marker id='ArrowFillRight' viewBox='0 0 10 10' refX='8' refY='5'  
+			 markerUnits='strokeWidth' markerWidth='8' markerHeight='6' orient='auto'>
+			 <path d='M 0 0 L 10 5 L 0 10 z' />
+		</marker>
+		<marker id='ArrowStrokeRight' viewBox='0 0 10 10' refX='8' refY='5'  
+			 markerUnits='strokeWidth' markerWidth='8' markerHeight='6' orient='auto'>
+			 <path d='M 0 0 L 10 5 L 0 10 L -1 8.8 L 7 5 L -1 1.2 z' />
+		</marker>
+		<marker id='ArrowStrokeLeft' viewBox='0 0 10 10' refX='2' refY='5'  
+			 markerUnits='strokeWidth' markerWidth='8' markerHeight='6' orient='auto'>
+			 <path d='M 10 0 L 11 1.2 L 3 5 L 11 8.8 L 10 10 L 0 5 z' />
+		</marker>
+	</defs>
+	<path d=' M25.033540,2.722592 C32.163513,2.695301 40.841447,7.674238 44.416248,13.843359 C47.991051,20.012480 47.995701,30.017294 44.426641,36.189739 C40.857582,42.362185 32.184282,47.349186 25.054286,47.328529' fill='#FFE6AA' stroke='none' stroke-width='0.000000' fill-opacity='1.000000' stroke-opacity='0.000000' />
+	<path d=' M25.033537,47.327927 C12.757318,47.280933 2.810107,37.290925 2.815820,25.014617 C2.821535,12.738312 12.778035,2.757564 25.054291,2.721994' fill='#000000' stroke='#000000' stroke-width='0.000000' fill-opacity='1.000000' stroke-opacity='1.000000' />
+</svg>

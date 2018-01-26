@@ -3,7 +3,7 @@
     <table class="forecast">
         <tr>
             <td>
-                <img class="weather-image"v-bind:src="'../../public/icons/' + forecast.icon + '.svg'">
+                <img class="card-image"v-bind:src="'../../public/icons/' + forecast.icon + '.svg'">
             </td>
             <td>
                 <h3 class="weather-date">
@@ -54,31 +54,4 @@ export default {
 <style lang="scss" scoped>
 @import "../sass/main.scss";
 
-table {
-    border-collapse: collapse;
-    height: 100%;
-    width: 100%;
-}
-
-tr, td {
-    position: relative;
-    @media only screen and (max-width: 320px) {
-        height: 1.5rem;
-    }
-}
-
-.weather-date {
-    @media only screen and (min-width: 320px) {
-        font-size: 2.2rem;
-    }
-}
-
-.weather-image {
-    @media only screen and (max-width: 320px) {
-        height: 5rem;
-    }
-    @media only screen and (min-width: 320px) {
-        height: 8rem;
-    }
-}
 </style>

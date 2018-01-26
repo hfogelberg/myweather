@@ -20,8 +20,8 @@
 
     <div class='sunmmon-container'>
       <h2 class="secondary-header">
-        Sun and Moon in <br>
-        {{city}}
+        Sun & Moon <br>
+        in {{city}}
       </h2>
 
     <div class="horizontal-slide">

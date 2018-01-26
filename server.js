@@ -1,9 +1,12 @@
-var express = require('express'),
+let express = require('express'),
   app = express(),
   cors = require('cors'),
   bodyParser = require('body-parser'),
   { api } = require('./api/api'),
   port = process.env.PORT || 80;
+
+console.log("PORT " + port);
+
 
 app.use(cors());
 app.use(bodyParser.json());
