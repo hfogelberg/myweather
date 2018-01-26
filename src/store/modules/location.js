@@ -65,7 +65,7 @@ const actions = {
         context.commit("isSearching", false);
       })
       .catch((err) => {
-        this.$router.push("/error");
+        router.push("/error");
       });
   }
 }

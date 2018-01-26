@@ -1,6 +1,6 @@
 import axios from "axios";
 import moment from "moment";
-import router from '../../router';
+import router from '../../router.js';
 import { API_ROOT_URL } from "./storeConfig.js";
 
 const state = {

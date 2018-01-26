@@ -13,7 +13,7 @@
 
     <div class='not-found-container'>
       <h2 class="secondary-header">
-        Ouch! Something went wront ....
+        Ouch! Something went wrong ....
       </h2>
 
       <p class="paragraph">
@@ -39,6 +39,7 @@ export default {
 }
 
 .secondary-header {
+  margin-top: 8rem;
   color: $warning-color;
 }
 
