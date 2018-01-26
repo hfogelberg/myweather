@@ -1,5 +1,6 @@
 import axios from "axios";
-import  moment from "moment";
+import moment from "moment";
+import router from '../../router';
 import { API_ROOT_URL } from "./storeConfig.js";
 
 const state = {
@@ -50,7 +51,6 @@ const actions = {
     var lat = this.getters.lat;
     var lon = this.getters.lon;
     var url = `${API_ROOT_URL}/forecast/${lat}/${lon}`;
-    console.log(url);
     
     axios.get(url)
       .then((res) => {
@@ -59,7 +59,7 @@ const actions = {
         context.commit('setHourly', res.data.hourly);
       })
       .catch((err) => {
-        console.log(err);
+        this.$router.push("/error");
       });
   }
 }

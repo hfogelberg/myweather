@@ -20,11 +20,12 @@ const api = (app) => {
 
     let sunTimes = suncalc.getTimes(new Date(), lat, lon);
     let moonTimes = suncalc.getMoonIllumination(new Date(), lat, lon);
-
-    res.json({
+    
+    res.setHeader("Content-Type", "application/json");
+    res.send(JSON.stringify({
       sunTimes,
       moonTimes
-    });
+    }));
   });
 
   app.get("/api/tides/:lat/:lon", (req, res) => {
@@ -35,12 +36,14 @@ const api = (app) => {
     axios.get(url)
       .then((result) => {
         let tides = result.data.extremes;
-        res.send({
+        res.setHeader("Content-Type", "application/json");
+        res.send(JSON.stringify({
           tides
-        });
+        }));
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Error fetching tides", err);
+        res.status(500).send({ err });
       });
   });
 
@@ -75,12 +78,14 @@ const api = (app) => {
           }
         });
 
-        res.send({
+        res.setHeader("Content-Type", "application/json");
+        res.send(JSON.stringify({
           name
-        });
+        }));
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err); 
+        res.status(500).send({ err });
       });
   })
 
@@ -88,7 +93,8 @@ const api = (app) => {
     let lat = req.params.lat;
     let lon = req.params.lon;
 
-    let url = `https://api.darksky.net/forecast/${DARKSKY_KEY}/${lat},${lon}?exclude=flags,minutely&units=auto`;
+    let url = `https://api.darksky.net/forecast/${DARKSKY_KEY}/${lat},${lon}?exclude=flags,minutely&units=si`;
+
     axios.get(url).then((result) => {
         let currentlyRaw = result.data.currently;
         let hourlyRaw = result.data.hourly.data;
@@ -153,14 +159,16 @@ const api = (app) => {
           };
         });
 
-        res.send({
+        res.setHeader("Content-Type", "application/json");
+        res.send(JSON.stringify({
           currently,
           daily,
           hourly
-        })
+        }));
       })
       .catch((err) => {
         console.log(err);
+        res.status(500).send({ err });
       });
   });
 };

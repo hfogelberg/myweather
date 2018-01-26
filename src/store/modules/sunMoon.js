@@ -1,5 +1,6 @@
 import axios from "axios";
 import moment from "moment";
+import router from '../../router';
 import { API_ROOT_URL } from "./storeConfig.js";
 
 const state = {
@@ -53,7 +54,7 @@ const actions = {
 
       })
       .catch((err) => {
-        console.log(err)
+        this.$router.push("/error");
       });
   }
 }

@@ -1,4 +1,5 @@
 import axios from "axios";
+import router from '../../router';
 import { API_ROOT_URL } from "./storeConfig.js";
 
 const state = {
@@ -56,7 +57,7 @@ const actions = {
   location(context, location) {
     context.commit("setLocation", location);
     const url = `${API_ROOT_URL}/locationname/${location.lat}/${location.lon}`;
-    console.log(url);
+
     axios.get(url)
       .then((res) => {
         context.commit("setCity", res.data.name);
@@ -64,7 +65,7 @@ const actions = {
         context.commit("isSearching", false);
       })
       .catch((err) => {
-        console.log(err);
+        this.$router.push("/error");
       });
   }
 }

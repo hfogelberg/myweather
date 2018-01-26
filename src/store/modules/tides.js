@@ -35,7 +35,7 @@ const actions = {
         context.commit("setTides", tides);
       })
       .catch((err) => {
-        console.log(err);
+        this.$router.push("/error");
       });
   }
 }

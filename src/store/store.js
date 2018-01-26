@@ -11,16 +11,19 @@ export const store = new Vuex.Store({
   state: {
     isSearching: false
   },
+
   getters: {
     isSearching: state => {
       return state.isSearching;
     }
   },
+  
   mutations: {
     isSearching: (state, payload) => {
       state.isSearching = payload
     }
   },
+  
   actions: {
     reset: ( context) => {
       context.commit("setCurrently", {});
@@ -33,6 +36,7 @@ export const store = new Vuex.Store({
       context.commit("setTides", []);
       context.commit("isSearching", false);
       context.commit("setHasCity", false);
+      context.commit("hasError", false);
     },
     setIsSearching: (context, isSearching) => {
       context.commit("isSearching", isSearching);
@@ -41,6 +45,7 @@ export const store = new Vuex.Store({
       context.commit("setHasCity", false);
     }
   },
+
   modules: {
     location,
     forecast,
