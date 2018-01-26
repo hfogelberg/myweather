@@ -1,4 +1,6 @@
-const axios = require('axios'),
+const {formatCurrently, formatDaily, formatHourly} = require("./utils/formatWeather"),
+  { parseAddress } = require("./utils/parseAddress"),
+      axios = require('axios'),
       { 
         GOOGLE_MAPS_KEY, 
         WORLD_TIDES_KEY, 
@@ -54,29 +56,7 @@ const api = (app) => {
     let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${GOOGLE_MAPS_KEY}`;
     axios.get(url)
       .then((result) => {
-        let addressComponents = result.data.results[0].address_components;
-        let name = "";
-        let hasName = false;
-
-        addressComponents.forEach((component) => {
-          let ct = component.types[0];
-          if (ct === "postal_town") {
-            name = component.short_name;
-            hasName = true;
-          }
-          if (ct === "locality" && !hasName) {
-            name = component.short_name;
-            hasName = true;
-          }
-          if (ct == "administrative_area_level_1" && !hasName) {
-            name = component.short_name;
-            hasName = true;
-          }
-          if (ct == "administrative_area_level_2" && !hasName) {
-            name = component.short_name;
-            hasName = true;
-          }
-        });
+        let name = parseAddress(result.data.results[0].address_components);
 
         res.setHeader("Content-Type", "application/json");
         res.send(JSON.stringify({
@@ -96,68 +76,9 @@ const api = (app) => {
     let url = `https://api.darksky.net/forecast/${DARKSKY_KEY}/${lat},${lon}?exclude=flags,minutely&units=si`;
 
     axios.get(url).then((result) => {
-        let currentlyRaw = result.data.currently;
-        let hourlyRaw = result.data.hourly.data;
-        let dailyRaw = result.data.daily.data;
-
-        let currently = {
-          date: currentlyRaw.time,
-          summary: currentlyRaw.summary,
-          icon: currentlyRaw.icon,
-          precipIntensity: Math.round(currentlyRaw.precipIntensity),
-          precipProb: Math.round(currentlyRaw.precipProbability * 100),
-          temp: Math.round(currentlyRaw.temperature),
-          humidity: Math.round(currentlyRaw.humidity * 100),
-          pressure: currentlyRaw.pressure,
-          windSpeed: Math.round(currentlyRaw.windSpeed),
-          maxWind: Math.round(currentlyRaw.windGust),
-          windBearing: currentlyRaw.windBearing,
-          cloudCover: Math.round(currentlyRaw.cloudCover * 100),
-          uvIndex: currentlyRaw.uvIndex,
-          type: "CURRENTLY"
-        };
-
-      let hourly = [];
-      for (let j = 0; j < hourlyRaw.length; j += 3) {
-        let weather = hourlyRaw[j]
-        hourly.push(
-          {
-            date: weather.time,
-            summary: weather.summary,
-            icon: weather.icon,
-            precipIntensity: Math.round(weather.precipIntensity),
-            precipProb: Math.round(weather.precipProbability * 100),
-            temp: Math.round(weather.temperature),
-            humidity: Math.round(weather.humidity * 100),
-            pressure: weather.pressure,
-            windSpeed: Math.round(weather.windSpeed),
-            maxWind: Math.round(weather.windGust),
-            windBearing: weather.windBearing,
-            cloudCover: Math.round(weather.cloudCover * 100),
-            uvIndex: weather.uvIndex,
-            type: "HOURLY"
-          }
-        );
-      }
-
-        let daily = dailyRaw.map((weather) => {
-          return {
-            date: weather.time,
-            summary: weather.summary,
-            icon: weather.icon,
-            precipIntensity: Math.round(weather.precipIntensity),
-            precipProb: Math.round(weather.precipProbability * 100),
-            temp: Math.round(weather.temperatureMax),
-            humidity: Math.round(weather.humidity * 100),
-            pressure: Math.round(weather.pressure),
-            windSpeed: Math.round(weather.windSpeed),
-            maxWind: Math.round(weather.windGust),
-            windBearing: weather.windBearing,
-            cloudCover: Math.round(weather.cloudCover * 100),
-            uvIndex: weather.uvIndex,
-            type: "DAILY"
-          };
-        });
+      let currently = formatCurrently(result.data.currently);
+      let hourly = formatHourly(result.data.hourly.data)
+      let daily = formatDaily(result.data.daily.data)
 
         res.setHeader("Content-Type", "application/json");
         res.send(JSON.stringify({
