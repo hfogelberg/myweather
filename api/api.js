@@ -1,17 +1,17 @@
-const {formatCurrently, formatDaily, formatHourly, formatSunMoon, parseAddress} = require("./utils/formatData"),
-      axios = require('axios'),
-      { 
-        GOOGLE_MAPS_KEY, 
-        WORLD_TIDES_KEY, 
-        DARKSKY_KEY,
-        APIXU_KEY
-      } = require('./apiConfig.js');
+const axios = require("axios");
+const {
+        formatCurrently, 
+        formatDaily, 
+        formatHourly, 
+        formatSunMoon, 
+        parseAddress} = require("./utils/formatData");
+const {config} = require("./config.js");
 
 const api = (app) => {
-  app.get('/api/', (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
+  app.get("/api/", (req, res) => {
+    res.setHeader("Content-Type", "application/json");
     res.send(JSON.stringify({
-      message: 'API is alive'
+      message: "API is alive"
     }));
   });
 
@@ -19,7 +19,7 @@ const api = (app) => {
     let lat = req.params.lat;
     let lon = req.params.lon;
 
-    let url = `http://api.apixu.com/v1/forecast.json?key=${APIXU_KEY}&q=${lat},${lon}&days=10`;
+    let url = `http://api.apixu.com/v1/forecast.json?key=${config.APIXU_KEY}&q=${lat},${lon}&days=10`;
     axios.get(url)
          .then((result) => {
            let forecasts = result.data.forecast;
@@ -37,7 +37,7 @@ const api = (app) => {
     let lat = req.params.lat;
     let lon = req.params.lon;
 
-    let url = `https://www.worldtides.info/api?extremes&lat=${lat}&lon=${lon}&key=${WORLD_TIDES_KEY}`;
+    let url = `https://www.worldtides.info/api?extremes&lat=${lat}&lon=${lon}&key=${config.WORLD_TIDES_KEY}`;
     axios.get(url)
       .then((result) => {
         let tides = result.data.extremes;
@@ -56,7 +56,7 @@ const api = (app) => {
     let lat = req.params.lat;
     let lon = req.params.lon;
 
-    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${GOOGLE_MAPS_KEY}`;
+    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${config.GOOGLE_MAPS_KEY}`;
     axios.get(url)
       .then((result) => {
         let name = parseAddress(result.data.results[0].address_components);
@@ -76,7 +76,7 @@ const api = (app) => {
     let lat = req.params.lat;
     let lon = req.params.lon;
 
-    let url = `https://api.darksky.net/forecast/${DARKSKY_KEY}/${lat},${lon}?exclude=flags,minutely&units=si`;
+    let url = `https://api.darksky.net/forecast/${config.DARKSKY_KEY}/${lat},${lon}?exclude=flags,minutely&units=si`;
 
     axios.get(url).then((result) => {
       let currently = formatCurrently(result.data.currently);

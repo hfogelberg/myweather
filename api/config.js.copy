@@ -1,15 +1,11 @@
-let isLocal = false;
-if (process.env.NODE_ENV == "development") {
-  isLocal = true;
-}
-
-const PORT = isLocal ? 3000 : 80;
 const GOOGLE_MAPS_KEY = "<KEY>";
 const WORLD_TIDES_KEY = "<KEY>";
 const DARKSKY_KEY = "<KEY>";
+const APIXU_KEY = "<KEY>";
 
 module.exports = {
   GOOGLE_MAPS_KEY,
   WORLD_TIDES_KEY,
-  DARKSKY_KEY
-}
+  DARKSKY_KEY,
+  APIXU_KEY
+};

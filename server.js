@@ -3,7 +3,7 @@ var express = require('express'),
   cors = require('cors'),
   bodyParser = require('body-parser'),
   { api } = require('./api/api'),
-  port = 3000;
+  port = process.env.PORT || 80;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -22,6 +22,3 @@ app.use((req, res, next) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-// For test
-module.exports.app = app;
