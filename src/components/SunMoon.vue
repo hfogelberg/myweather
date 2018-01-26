@@ -23,50 +23,30 @@
         Sun and Moon in <br>
         {{city}}
       </h2>
-      <div class="sunmoon-card"> 
-        <table class="forecast">
-          <tr>
-            <td>
-              <img class="image" src="../../public/icons/sunrise.svg" >
-            </td>
-            <td>
-              <div class="sun-label">
-                {{sun.sunrise}}
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img class="image" src="../../public/icons/sunset.svg">
-            </td>
-            <td>
-              <div class="sun-label">
-                {{sun.sunset}}
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img class="image" src="../../public/icons/clear-night.svg">
-            </td>
-            <td>
-              <div class="sun-label">
-                {{moon.phase}} %
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
+
+    <div class="horizontal-slide">
+      <ul class="horizontal-slide__wrapper">
+        <li v-for="astro in astroTimes">
+          <sun-card :astro="astro" />
+        </li>
+      </ul>
+    </div>
+
     </div>
   </div>
 </template>
 
 <script>
 import {mapGetters} from "vuex";
+import SunCard from "./SunCard";
 
 export default {
+  components: {
+    'sun-card': SunCard
+  },
+
   computed: {
-    ...mapGetters(["sun", "moon", "city"])
+    ...mapGetters(["astroTimes", "city"])
   },
 
   methods: {

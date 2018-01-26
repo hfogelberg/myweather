@@ -4,27 +4,18 @@ import router from '../../router.js';
 import { API_ROOT_URL } from "./storeConfig.js";
 
 const state = {
-  sun: {},
-  moon: {}
+  astroTimes: []
 }
 
 const getters = {
-  sun: state => {
-    return state.sun;
+  astroTimes: state => {
+    return state.astroTimes;
   },
-
-  moon: state => {
-    return state.moon;
-  }
 }
 
 const mutations = {
-  setSun: (state, payload) => {
-    state.sun = payload;
-  },
-
-  setMoon: (state, payload) => {
-    state.moon = payload;
+  setAstroTimes: (state, payload) => {
+    state.astroTimes = payload;
   }
 }
 
@@ -35,23 +26,8 @@ const actions = {
     var url = `${API_ROOT_URL}/sunmoon/${lat}/${lon}`;
     axios.get(url)
       .then((res) => {
-        let sun = res.data.sunTimes;
-        let moon = res.data.moonTimes;
-        let sunTimes = {
-          sunrise: moment(sun.sunrise).local().format("ddd HH:mm"),
-          sunset: moment(sun.sunset).local().format("ddd HH:mm"),
-          dawn: moment(sun.dawn).local().format("ddd HH:mm"),
-          dusk: moment(sun.dusk).local().format("ddd HH:mm"),
-          solarNoon: moment(sun.solarNoon).local().format("ddd HH:mm")
-        };
-
-        let moonTimes = {
-          phase: Math.round(moon.phase * 100)
-        };
-
-        context.commit("setSun", sunTimes);
-        context.commit("setMoon", moonTimes);
-
+        let astroTimes = res.data.astroTimes;
+        context.commit("setAstroTimes", astroTimes);
       })
       .catch((err) => {
         router.push("/error");

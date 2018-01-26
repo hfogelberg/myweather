@@ -31,12 +31,10 @@ export const store = new Vuex.Store({
       context.commit("setHourly", []);
       context.commit("setLocation", {lat: 0.0, lon: 0.0 });
       context.commit("setCity", "");
-      context.commit("setSun", {});
-      context.commit("setMoon", {});
+      context.commit("setAstroTimes", []);
       context.commit("setTides", []);
       context.commit("isSearching", false);
       context.commit("setHasCity", false);
-      context.commit("hasError", false);
     },
     setIsSearching: (context, isSearching) => {
       context.commit("isSearching", isSearching);

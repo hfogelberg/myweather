@@ -1,12 +1,11 @@
-const {formatCurrently, formatDaily, formatHourly} = require("./utils/formatWeather"),
-  { parseAddress } = require("./utils/parseAddress"),
+const {formatCurrently, formatDaily, formatHourly, formatSunMoon, parseAddress} = require("./utils/formatData"),
       axios = require('axios'),
       { 
         GOOGLE_MAPS_KEY, 
         WORLD_TIDES_KEY, 
-        DARKSKY_KEY 
-      } = require('./apiConfig.js'),
-      suncalc = require('suncalc');
+        DARKSKY_KEY,
+        APIXU_KEY
+      } = require('./apiConfig.js');
 
 const api = (app) => {
   app.get('/api/', (req, res) => {
@@ -20,14 +19,18 @@ const api = (app) => {
     let lat = req.params.lat;
     let lon = req.params.lon;
 
-    let sunTimes = suncalc.getTimes(new Date(), lat, lon);
-    let moonTimes = suncalc.getMoonIllumination(new Date(), lat, lon);
-    
-    res.setHeader("Content-Type", "application/json");
-    res.send(JSON.stringify({
-      sunTimes,
-      moonTimes
-    }));
+    let url = `http://api.apixu.com/v1/forecast.json?key=${APIXU_KEY}&q=${lat},${lon}&days=10`;
+    axios.get(url)
+         .then((result) => {
+           let forecasts = result.data.forecast;
+           let astroTimes = formatSunMoon(forecasts, lat, lon);
+           res.setHeader("Content-Type", "application/json");
+           res.send(JSON.stringify({ astroTimes }));
+         })
+         .catch((err) => {
+           console.log("Error fetching sun and moon", err);
+           res.status(500).send({ err });
+         });
   });
 
   app.get("/api/tides/:lat/:lon", (req, res) => {
