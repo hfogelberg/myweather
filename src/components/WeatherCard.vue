@@ -62,7 +62,7 @@ td {
 
 .summary {
     font-size: 1.7rem;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 td:nth-child(2) {

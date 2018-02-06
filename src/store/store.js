@@ -18,7 +18,7 @@ export const store = new Vuex.Store({
     },
 
     imageRootUrl: state => {
-      return "http://res.cloudinary.com/golizzard/image/upload/v1517470891/myweather/";
+      return "https://res.cloudinary.com/golizzard/image/upload/v1517470891/myweather/";
     }
   },
   

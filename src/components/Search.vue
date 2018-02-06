@@ -14,7 +14,7 @@
       </li>
       <li>
         <button @click="getLocation" class="btn-transparent btn-gps"> 
-          <img src="/public/icons/gps.svg" class="img-gps"/>
+          <img src="/public/img/gps.svg" class="img-gps"/>
         </button>
       </li>
     </ul>
@@ -25,17 +25,17 @@
     </div>
 
     <div class="row button-row" v-show="hasCity">
-        <div class="col-4-12 color-red" v-show="hasAstro">
+        <div class="col-4-12" v-show="hasAstro">
           <button @click="getWeather" class="btn btn-large btn-1">
             Weather
           </button>
         </div>
-        <div class="col-4-12 color-blue"  v-show="hasTides">
+        <div class="col-4-12"  v-show="hasTides">
           <button @click="getTides" class="btn btn-large btn-2">
             Tides
           </button>
         </div>
-        <div class="col-4-12 color-green" v-show="hasWeather">
+        <div class="col-4-12" v-show="hasWeather">
           <button @click="getSun" class="btn btn-large btn-3">
             Astronomy
           </button>

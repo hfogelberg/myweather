@@ -39,13 +39,13 @@ const actions = {
            let astros = res.data.astroTimes;
            let astroTimes = astros.map((astro) => {
              let astroTime = {
-               date: moment(astro.date).format("ddd Do"),
-               sunrise: moment(astro.sunrise).format("HH:mm"),
-               sunset: moment(astro.sunset).format("HH:mm"),
-               moonrise: moment(astro.moonrise).format("HH:mm"),
-               moonset: moment(astro.moonset).format("HH:mm"),
+               date: moment(astro.date).local().format("ddd Do"),
+               sunrise: moment(astro.sunrise).local().format("HH:mm"),
+               sunset: moment(astro.sunset).local().format("HH:mm"),
+               moonrise: moment(astro.moonrise).local().format("HH:mm"),
+               moonset: moment(astro.moonset).local().format("HH:mm"),
                moonImage: `${imageRoot}${astro.moonImage}`,
-               fraction: astro.fraction
+               fraction: `${astro.fraction} %`
              };
              return astroTime;
            }) 

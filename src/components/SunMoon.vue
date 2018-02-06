@@ -7,12 +7,12 @@
         </router-link>
       </li>
       <li>
-        <button @click="getWeather" class="btn menu-bar__item--link btn-2 btn-medium">
+        <button @click="getWeather" class="btn menu-bar__item--link btn-1 btn-medium">
           Weather
         </button>
       </li>
       <li>
-        <button @click="getTides" class="btn menu-bar__item--link btn-1 btn-medium">
+        <button @click="getTides" class="btn menu-bar__item--link btn-2 btn-medium">
         Tides
         </button>
       </li>

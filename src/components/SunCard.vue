@@ -21,7 +21,7 @@
         <td>
           <img v-bind:src="astro.moonImage" class="card-image">
         </td>
-        <td>{{astro.fraction}}</td>
+        <td>{{astro.fraction}} %</td>
       </tr>
       <tr>
         <td>Moonrise</td>

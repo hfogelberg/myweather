@@ -12,7 +12,7 @@ const formatCurrently = (currentlyRaw) => {
     pressure: currentlyRaw.pressure,
     windSpeed: Math.round(currentlyRaw.windSpeed),
     maxWind: Math.round(currentlyRaw.windGust),
-    windBearing: currentlyRaw.windBearing,
+    windBearing: degToCompass(currentlyRaw.windBearing),
     cloudCover: Math.round(currentlyRaw.cloudCover * 100),
     uvIndex: currentlyRaw.uvIndex,
     type: "CURRENTLY"
@@ -34,7 +34,7 @@ const formatHourly = (hourlyRaw) => {
         pressure: weather.pressure,
         windSpeed: Math.round(weather.windSpeed),
         maxWind: Math.round(weather.windGust),
-        windBearing: weather.windBearing,
+        windBearing: degToCompass(weather.windBearing),
         cloudCover: Math.round(weather.cloudCover * 100),
         uvIndex: weather.uvIndex,
         type: "HOURLY"
@@ -45,8 +45,19 @@ const formatHourly = (hourlyRaw) => {
   return hourly;
 };
 
+function degToCompass(num) { 
+    while( num < 0 ) num += 360 ;
+    while( num >= 360 ) num -= 360 ; 
+    val= Math.round( (num -11.25 ) / 22.5 ) ;
+    arr=["N","NNE","NE","ENE","E","ESE", "SE", 
+          "SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"] ;
+
+    return arr[ Math.abs(val) ] ;
+}
+
 const formatDaily = (dailyRaw) => {
   let daily = dailyRaw.map((weather) => {
+
     return {
       date: weather.time,
       summary: weather.summary,
@@ -57,7 +68,7 @@ const formatDaily = (dailyRaw) => {
       pressure: Math.round(weather.pressure),
       windSpeed: Math.round(weather.windSpeed),
       maxWind: Math.round(weather.windGust),
-      windBearing: weather.windBearing,
+      windBearing: degToCompass(weather.windBearing),
       cloudCover: Math.round(weather.cloudCover * 100),
       uvIndex: weather.uvIndex,
       type: "DAILY"

@@ -1,7 +1,11 @@
+var CACHE_STATIC = 'static-v2';
+var CACHE_DYNAMIC = 'dynamic-v2';
+
 self.addEventListener('install', function (event) {
+
   console.log('Installing Service Worker');
   event.waitUntil(
-    caches.open('static-v1')
+    caches.open(CACHE_STATIC)
       .then(function (cache) {
         cache.add('/');
         cache.add('/index.html');
@@ -17,7 +21,7 @@ self.addEventListener('activate', function (event) {
     caches.keys()
       .then(function (keyList) {
         return Promise.all(keyList.map(function (key) {
-          if (key !== 'static-v1' && key !== 'dynamic') {
+          if (key !==  CACHE_STATIC && key !== CACHE_DYNAMIC) {
             console.log("SW removing old cache " + key);
             return caches.delete(key);
           }
@@ -36,7 +40,7 @@ self.addEventListener('fetch', function (event) {
         } else {
           return fetch(event.request)
             .then(function (res) {
-              return caches.open('dynamic')
+              return caches.open(CACHE_DYNAMIC)
                 .then(function (cache) {
                   cache.put(event.request.url, res.clone());
                   return res;
