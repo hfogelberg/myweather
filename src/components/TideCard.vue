@@ -4,7 +4,7 @@
       <tr>        
       <tr>
         <td>
-          <img :src = "'../public/icons/' + tide.type + '.svg'" class="card-image">
+          <img v-bind:src = "imageRootUrl + tide.type" class="card-image">
         </td>
         <td>
           <h3 class="weather-date">{{tide.date}}</h3>
@@ -24,12 +24,33 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
 export default {
-  props: ["tide"]
+  props: ["tide"],
+  computed: {
+    ...mapGetters(["imageRootUrl"])
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "../sass/main.scss";
 
+.card-image {
+  height: 10rem;
+}
+
+.weather-date {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+td { 
+  line-height: 5rem;
+  font-size: 2.5rem;
+}
+
+td:nth-child(2) {
+    padding-left: 1rem;
+}
 </style>

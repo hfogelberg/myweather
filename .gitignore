@@ -7,7 +7,7 @@ yarn-error.log
 tmp/
 
 playground/
-api/apiConfig.js
+startApp
 
 # Editor directories and files
 .idea

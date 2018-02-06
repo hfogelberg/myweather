@@ -6,7 +6,6 @@ const formatCurrently = (currentlyRaw) => {
     date: currentlyRaw.time,
     summary: currentlyRaw.summary,
     icon: currentlyRaw.icon,
-    precipIntensity: Math.round(currentlyRaw.precipIntensity),
     precipProb: Math.round(currentlyRaw.precipProbability * 100),
     temp: Math.round(currentlyRaw.temperature),
     humidity: Math.round(currentlyRaw.humidity * 100),
@@ -29,7 +28,6 @@ const formatHourly = (hourlyRaw) => {
         date: weather.time,
         summary: weather.summary,
         icon: weather.icon,
-        precipIntensity: Math.round(weather.precipIntensity),
         precipProb: Math.round(weather.precipProbability * 100),
         temp: Math.round(weather.temperature),
         humidity: Math.round(weather.humidity * 100),
@@ -53,7 +51,6 @@ const formatDaily = (dailyRaw) => {
       date: weather.time,
       summary: weather.summary,
       icon: weather.icon,
-      precipIntensity: Math.round(weather.precipIntensity),
       precipProb: Math.round(weather.precipProbability * 100),
       temp: Math.round(weather.temperatureMax),
       humidity: Math.round(weather.humidity * 100),
@@ -97,82 +94,9 @@ const parseAddress = (addressComponents) => {
   return name;
 };
 
-const formatSunMoon = (forecasts, lat, lon) => {
-  let astros = forecasts.forecastday.map((forecast) => {
-    let astro = forecast.astro;
-    let astroTimes = {};
-
-    astroTimes.date = moment(forecast.date_epoch).format("ddd DD");
-    illumination = suncalc.getMoonIllumination(forecast.date_epoch, lat, lon);
-
-    switch(illumination) {
-      case illumination<10:
-        astroTimes.moonImage = "../public/icons/new-moon.svg";
-        break;
-      case illumination<40:
-        astroTimes.moonImage = "../public/icons/quarter-moon.svg";
-        break;
-      case illumination<60:
-        astroTimes.moonImage = "../public/icons/half-moon.svg";
-        break;
-      case illumination<90:
-        astroTimes.moonImage = "../public/icons/three-quarter-moon.svg";
-        break;
-      default:
-        astroTimes.moonImage = "../public/icons/full-moon.svg";
-    }
-    
-    astroTimes.fraction = Math.round(illumination.fraction * 100);
-
-    if (astro.sunrise.includes("PM")) {
-      let hours = parseInt(astro.sunrise.slice(0, 2)) + 12;
-      let minutes = astro.sunrise.slice(3, 5);
-      astroTimes.sunrise = `${hours}:${minutes}`
-    } else {
-      let hours = astro.sunrise.slice(0, 2);
-      let minutes = astro.sunrise.slice(3, 5);
-      astroTimes.sunrise = `${hours}:${minutes}`
-    }
-
-    if (astro.sunset.includes("PM")) {
-      let hours = parseInt(astro.sunset.slice(0, 2)) + 12;
-      let minutes = astro.sunset.slice(3, 5);
-      astroTimes.sunset = `${hours}:${minutes}`
-    } else {
-      let hours = astro.sunset.slice(0, 2);
-      let minutes = astro.sunset.slice(3, 5);
-      astroTimes.sunset = `${hours}:${minutes}`
-    }
-
-    if (astro.moonrise.includes("PM")) {
-      let hours = parseInt(astro.moonrise.slice(0, 2)) + 12;
-      let minutes = astro.moonrise.slice(3, 5);
-      astroTimes.moonrise = `${hours}:${minutes}`
-    } else {
-      let hours = astro.moonrise.slice(0, 2);
-      let minutes = astro.moonrise.slice(3, 5);
-      astroTimes.moonrise = `${hours}:${minutes}`
-    }
-
-    if (astro.moonset.includes("PM")) {
-      let hours = parseInt(astro.moonset.slice(0, 2)) + 12;
-      let minutes = astro.moonset.slice(3, 5);
-      astroTimes.moonset = `${hours}:${minutes}`
-    } else {
-      let hours = astro.moonset.slice(0, 2);
-      let minutes = astro.moonset.slice(3, 5);
-      astroTimes.moonset = `${hours}:${minutes}`
-    }
-    return astroTimes
-  });
-
-  return astros;
-}
-
 module.exports = {
   formatCurrently,
   formatDaily,
   formatHourly,
-  parseAddress,
-  formatSunMoon
+  parseAddress
 };

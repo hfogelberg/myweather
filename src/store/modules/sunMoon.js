@@ -21,19 +21,32 @@ const mutations = {
 
 const actions = {
   getSunMoon(context) {
-    console.log("getSunMoon");
-    
-    var lat = this.getters.lat;
-    var lon = this.getters.lon;
-    var url = `${API_ROOT_URL}/sunmoon/${lat}/${lon}`;
-    axios.get(url)
-      .then((res) => {
-        let astroTimes = res.data.astroTimes;
-        context.commit("setAstroTimes", astroTimes);
-      })
-      .catch((err) => {
-        router.push("/error");
-      });
+    let lat = this.getters.lat;
+    let lon = this.getters.lon;
+    let imageRoot = this.getters.imageRootUrl
+    let url = `${API_ROOT_URL}/astro/${lat}/${lon}`;
+    axios.get(url) 
+         .then((res) => {
+           console.log(res.data);
+           let astros = res.data.astroTimes;
+           let astroTimes = astros.map((astro) => {
+             let astroTime = {
+               date: moment(astro.date).format("ddd Do"),
+               sunrise: moment(astro.sunrise).format("HH:mm"),
+               sunset: moment(astro.sunset).format("HH:mm"),
+               moonrise: moment(astro.moonrise).format("HH:mm"),
+               moonset: moment(astro.moonset).format("HH:mm"),
+               moonImage: `${imageRoot}${astro.moonImage}`,
+               fraction: astro.fraction
+             };
+             console.log(astroTime);
+             return astroTime;
+           }) 
+           context.commit("setAstroTimes", astroTimes);
+         })
+        .catch((err) => {
+          router.push('/err');
+         });
   }
 }
 

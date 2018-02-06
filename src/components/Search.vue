@@ -36,7 +36,7 @@
         </div>
         <div class="col-4-12 color-green">
           <button @click="getSun" class="btn-large btn-3">
-            Sun/Times
+            Astronomy
           </button>
         </div>
       </div>
@@ -78,6 +78,7 @@ export default {
       };
           
       this.$store.dispatch("geoAndCity", location);
+      this.getAllData();
     });
   },
 
@@ -86,18 +87,21 @@ export default {
   },
 
   methods: {
+    getAllData() {
+      this.$store.dispatch("getSunMoon");
+      this.$store.dispatch("getForecast");
+      this.$store.dispatch("getTides");
+    },
+
     getSun() {
-      this.$store.dispatch("getSunMoon")
       this.$router.push("/sunmoon");
     },
 
     getWeather() {
-      this.$store.dispatch("getForecast");
       this.$router.push("/weather");
     },
 
     getTides() {
-      this.$store.dispatch("getTides");
       this.$router.push("/tides");
     },
 
@@ -114,6 +118,7 @@ export default {
           };
           
           this.$store.dispatch("location", location);
+          this.getAllData();
         });
       } else {
         console.log("Can't handle geolocation");

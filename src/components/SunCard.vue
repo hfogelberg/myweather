@@ -3,7 +3,7 @@
     <table class="forecast">
       <tr>
         <td>
-          <img class="card-image" src="../../public/icons/clear-day.svg">
+          <img class="card-image" v-bind:src="imageRootUrl + 'clear-day.svg'">
         </td>
         <td>
           <h3 class="weather-date">{{astro.date}}</h3>
@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <td>
-          <img :src="astro.moonImage" class="card-image">
+          <img v-bind:src="astro.moonImage" class="card-image">
         </td>
         <td>{{astro.fraction}}</td>
       </tr>
@@ -37,8 +37,12 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex"
 export default {
-  props: ["astro"]
+  props: ["astro"],
+  computed: {
+    ...mapGetters(["imageRootUrl"])
+  }
 }
 </script>
 

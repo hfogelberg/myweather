@@ -22,20 +22,31 @@
                 font-size: 1.4rem;
                 height: 28rem;
                 width: 70vw;
-                margin-top: .5rem;
                 margin-right: 1rem;
                 padding-left: 1rem;
                 padding-right: 1rem;
+                margin-top: 3rem;
             }
             @media only screen and (min-width: 321px) and (max-width: 599px) {
+                margin-top: 3rem;
                 width: 60vw;
-                height: 32rem;
+                height: 40vh;
                 margin-top: 1rem;
                 padding-left: 2rem;
                 padding-right: 2rem;
                 margin-right: 1rem;
             }
-            @media only screen and (min-width: 600px) {
+            @media only screen and (min-width: 600px) and (max-width: 800px) {
+                margin-top: 8rem;
+                width: 30vw;
+                max-width: 150rem;
+                height: 32rem;
+                padding-left: 2rem;
+                padding-right: 2rem;
+                margin-right: 1rem;
+            }
+            @media only screen and (min-width: 800px) {
+                margin-top: 3rem;
                 width: 30vw;
                 max-width: 175rem;
                 height: 32rem;

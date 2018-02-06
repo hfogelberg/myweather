@@ -48,9 +48,9 @@ const mutations = {
 
 const actions = {
   getForecast(context) {
-    var lat = this.getters.lat;
-    var lon = this.getters.lon;
-    var url = `${API_ROOT_URL}/forecast/${lat}/${lon}`;
+    let lat = this.getters.lat;
+    let lon = this.getters.lon;
+    let url = `${API_ROOT_URL}/forecast/${lat}/${lon}`;
     
     axios.get(url)
       .then((res) => {

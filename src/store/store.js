@@ -15,6 +15,10 @@ export const store = new Vuex.Store({
   getters: {
     isSearching: state => {
       return state.isSearching;
+    },
+
+    imageRootUrl: state => {
+      return "http://res.cloudinary.com/golizzard/image/upload/v1517470891/myweather/";
     }
   },
   

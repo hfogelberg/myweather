@@ -55,6 +55,7 @@ const actions = {
   },
 
   location(context, location) {
+    console.log("geoAndCity", location);
     context.commit("setLocation", location);
     const url = `${API_ROOT_URL}/locationname/${location.lat}/${location.lon}`;
 

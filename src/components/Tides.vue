@@ -10,7 +10,7 @@
       <button @click="getWeather" class="btn-transparent menu-bar__item--link btn-1 btn-medium">Weather</button>
     </li>
     <li>
-      <button @click="getSunmoon" class="menu-bar__item--link btn-2 btn-medium">Sun/Moon</button>
+      <button @click="getSunmoon" class="menu-bar__item--link btn-2 btn-medium">Astronomy</button>
     </li>
   </ul>
 
@@ -23,7 +23,7 @@
     <div class="horizontal-slide">
       <ul class="horizontal-slide__wrapper">
         <li v-for="tide in tides">
-          <tide-card :tide="tide" />
+          <tide-card :tide="tide" class="card" />
         </li>
       </ul>
     </div>

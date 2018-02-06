@@ -10,7 +10,7 @@
       <button @click="getTides" class="btn-transparent menu-bar__item--link btn-1 btn-medium">Tides</button>
     </li>
     <li>
-      <button @click="getSunmoon" class="menu-bar__item--link btn-2 btn-medium">Sun/Moon</button>
+      <button @click="getSunmoon" class="menu-bar__item--link btn-2 btn-medium">Astronomy</button>
     </li>
   </ul>
 
@@ -84,14 +84,12 @@ export default {
           this.showNow=false;
           this.showDay=false;
           this.showHour=true;
-          this.$refs.hours.scrollLeft = 0;
       },
       
       days() {
           this.showNow=false;
           this.showDay=true;
           this.showHour=false;
-          this.$refs.days.scrollLeft = 0;
       },
 
       getTides() {
@@ -121,28 +119,19 @@ export default {
 }
 
 .weather-container {
-    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    @media only screen and (min-width: 600px){
+    @media only screen and (max-width: 320px) {
+      margin-top: 2rem;
+    }
+    @media only screen and (min-width: 321px) and (max-width: 599px) {
+      margin-top: 3rem;
+    }
+    @media only screen and (min-width: 600px) {
+      margin-top: 5rem;
       padding: 2rem;
     }
-}
-
-.horizontal-slide {
-  @media only screen and (min-width: 600px){
-    margin-top: 1rem;
-  }
-}
-
-.weather-image {
-  @media only screen and (max-width: 599px){
-    max-height: 2rem;
-  }
-  @media only screen and (min-width: 600px){
-    max-height: 8rem;
-  }
 }
 </style>
