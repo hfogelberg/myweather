@@ -5,11 +5,8 @@ self.addEventListener('install', function (event) {
       .then(function (cache) {
         cache.add('/');
         cache.add('/index.html');
-        cache.add('/public/scripts/script.js');
-        cache.add('/public/styles/style.css');
-        cache.add('/public/img/microphone.svg')
-        cache.add('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700');
-        cache.add('https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js');
+        cache.add('/dist/build.js');
+        cache.add('https://fonts.googleapis.com/css?family=Lato:300,400,700,700i');
       })
   );
 });
@@ -48,7 +45,6 @@ self.addEventListener('fetch', function (event) {
             .catch(function (err) {
               // intentionally empty
             });
-
         }
       })
   );

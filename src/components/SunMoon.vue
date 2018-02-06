@@ -69,7 +69,7 @@ export default {
 .sunmmon-container {
   margin-top: 5rem;
 
-   @media only screen and (max-width: 599px) {
+  @media only screen and (max-width: 599px) {
     margin-top: 2rem;
   }
 }
