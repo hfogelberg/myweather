@@ -24,17 +24,17 @@
     </div>
 
     <div class="row button-row" v-show="hasCity">
-        <div class="col-4-12 color-red">
+        <div class="col-4-12 color-red" v-show="hasAstro">
           <button @click="getWeather" class="btn-large btn-1">
             Weather
           </button>
         </div>
-        <div class="col-4-12 color-blue">
+        <div class="col-4-12 color-blue"  v-show="hasTides">
           <button @click="getTides" class="btn-large btn-2">
             Tides
           </button>
         </div>
-        <div class="col-4-12 color-green">
+        <div class="col-4-12 color-green" v-show="hasWeather">
           <button @click="getSun" class="btn-large btn-3">
             Astronomy
           </button>
@@ -83,7 +83,7 @@ export default {
   },
 
   computed: {
-  ...mapGetters(["city", "hasCity", "isSearching"])
+  ...mapGetters(["city", "hasCity", "isSearching", "hasAstro", "hasTides", "hasWeather"])
   },
 
   methods: {

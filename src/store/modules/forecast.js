@@ -6,10 +6,14 @@ import { API_ROOT_URL } from "./storeConfig.js";
 const state = {
   currently: {},
   daily: [],
-  hourly: []
+  hourly: [],
+  hasWeather: false
 }
 
 const getters = {
+  hasWeather: state => {
+    return state.hasWeather;
+  },
   currently: state => {
     return state.currently;
   },
@@ -22,6 +26,10 @@ const getters = {
 }
 
 const mutations = {
+  setHasWeather: (state, payload) => {
+    state.hasWeather = payload;
+  },
+
   setCurrently: (state, payload) => {
     // Convert time to local and format
     payload.date = moment.unix(payload.date).local().format("ddd HH");
@@ -57,6 +65,7 @@ const actions = {
         context.commit('setCurrently', res.data.currently);
         context.commit('setDaily', res.data.daily);
         context.commit('setHourly', res.data.hourly);
+        context.commit('setHasWeather', true);
       })
       .catch((err) => {
         this.$router.push("/error");

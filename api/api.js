@@ -31,7 +31,6 @@ const api = (app) => {
       const illumination = suncalc.getMoonIllumination(date, lat, lon);
       const moon = suncalc.getMoonTimes(date, lat, lon);
       let moonImage = "";
-      console.log(illumination.fraction);
       if (illumination.fraction < .1) {
         moonImage = "new-moon.svg";
       } else if (illumination.fraction < .4) {
@@ -43,7 +42,6 @@ const api = (app) => {
       } else {
           moonImage = "full-moon.svg";
       }
-      console.log(moonImage);
 
       let astro = {
         date: date,
@@ -57,8 +55,7 @@ const api = (app) => {
 
       astroTimes.push(astro);
     }
-
-    
+  
     res.setHeader("Content-Type", "application/json");
     res.send(JSON.stringify({ astroTimes }));
   });

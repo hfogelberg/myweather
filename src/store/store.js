@@ -39,6 +39,9 @@ export const store = new Vuex.Store({
       context.commit("setTides", []);
       context.commit("isSearching", false);
       context.commit("setHasCity", false);
+      context.commit('setHasWeather', false);
+      context.commit("setHasAstro", false);
+      context.commit("setHasTides", false);
     },
     setIsSearching: (context, isSearching) => {
       context.commit("isSearching", isSearching);

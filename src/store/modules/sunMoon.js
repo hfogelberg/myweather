@@ -4,18 +4,27 @@ import router from '../../router.js';
 import { API_ROOT_URL } from "./storeConfig.js";
 
 const state = {
-  astroTimes: []
+  astroTimes: [],
+  hasAstro: false
 }
 
 const getters = {
   astroTimes: state => {
     return state.astroTimes;
   },
+
+  hasAstro: state => {
+    return state.hasAstro;
+  }
 }
 
 const mutations = {
   setAstroTimes: (state, payload) => {
     state.astroTimes = payload;
+  },
+
+  setHasAstro: (state, payload) => {
+    state.hasAstro = payload;
   }
 }
 
@@ -27,7 +36,6 @@ const actions = {
     let url = `${API_ROOT_URL}/astro/${lat}/${lon}`;
     axios.get(url) 
          .then((res) => {
-           console.log(res.data);
            let astros = res.data.astroTimes;
            let astroTimes = astros.map((astro) => {
              let astroTime = {
@@ -39,10 +47,10 @@ const actions = {
                moonImage: `${imageRoot}${astro.moonImage}`,
                fraction: astro.fraction
              };
-             console.log(astroTime);
              return astroTime;
            }) 
            context.commit("setAstroTimes", astroTimes);
+           context.commit("setHasAstro", true);
          })
         .catch((err) => {
           router.push('/err');

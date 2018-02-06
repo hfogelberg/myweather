@@ -3,18 +3,27 @@ import moment from "moment";
 import { API_ROOT_URL } from "./storeConfig.js";
 
 const state = {
-  tides: []
+  tides: [],
+  hasTides: false
 }
 
 const getters = {
   tides: state => {
     return state.tides;
+  },
+
+  hasTides: state => {
+    return state.hasTides;
   }
 }
 
 const mutations = {
   setTides: (state, payload) => {
     state.tides = payload;
+  },
+
+  setHasTides: (state, payload) => {
+    state.hasTides = payload;
   }
 }
 
@@ -33,6 +42,7 @@ const actions = {
           return tide;
         });
         context.commit("setTides", tides);
+        context.commit("setHasTides", true);
       })
       .catch((err) => {
         this.$router.push("/error");
