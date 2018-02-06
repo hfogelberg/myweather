@@ -12,7 +12,8 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2" class="summary">
+            <td></td>
+            <td class="summary">
                 {{forecast.summary}}
             </td>
         </tr>
@@ -33,7 +34,7 @@
             <td>{{forecast.humidity}}% </td>
         </tr>
         <tr>
-            <td>Cloud cover: </td>
+            <td>Cloud: </td>
             <td>{{forecast.cloudCover}}%</td>
         </tr>
     </table>
@@ -53,10 +54,15 @@ export default {
 
 <style lang="scss" scoped>
 @import "../sass/main.scss";
+
+td {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .summary {
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 400;
-    padding-bottom: 1rem;
 }
 
 td:nth-child(2) {

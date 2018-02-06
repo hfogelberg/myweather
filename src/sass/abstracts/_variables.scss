@@ -1,21 +1,20 @@
 // COLORS
 $color-white: #fff;
 $color-black: #000;
-$color-grey-light: #ecf0f1;
-$color-grey-dark: #95a5a6;
-$primary-color-dark: #455A64;
+$background-color: #f1f7faee;
 $primary-color: #a0bbc9;
+$primary-color-dark: #455A64;
 $primary-color-light: #CFD8DC;
-$primary-color-text: #03A9F4;
+$accent-color: #CFD8DC;
+$pale-blue-color: #9adefe;
+$primary-blue-color: #03A9F4;
+$secondary-blue-color: #0d47a1;
 $warning-color: #e53935;
 
-$accent-color: #CFD8DC;
-$secondary-text-color: #0d47a1;
-$background-color: #f1f7faee;
-$color-lime: #eeff41;
-$color-indigo: #5c6bc0;
-$color-amber: #ffb300;
+// FONT
 $default-font-size: 1.6rem;
+
+// GUTTERS
 $gutter-xsmall: 1rem;
 $gutter-small: 2rem;
 $gutter-medium: 4rem;

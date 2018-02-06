@@ -16,6 +16,8 @@
             overflow-x: auto;
             border: 1px solid black;
             border-radius: 5px;
+            justify-content: center;
+            align-items: center;
             background-color: $accent-color;
             box-shadow: 0 10px 20px rgba($color-black, 0.2);
             @media only screen and (max-width: 320px) {
@@ -28,16 +30,15 @@
                 margin-top: 3rem;
             }
             @media only screen and (min-width: 321px) and (max-width: 599px) {
-                margin-top: 3rem;
                 width: 60vw;
-                height: 40vh;
+                height: 49vh;
                 margin-top: 1rem;
                 padding-left: 2rem;
                 padding-right: 2rem;
                 margin-right: 1rem;
             }
             @media only screen and (min-width: 600px) and (max-width: 800px) {
-                margin-top: 8rem;
+                margin-top: 4rem;
                 width: 30vw;
                 max-width: 150rem;
                 height: 32rem;
@@ -47,8 +48,7 @@
             }
             @media only screen and (min-width: 800px) {
                 margin-top: 3rem;
-                width: 30vw;
-                max-width: 175rem;
+                width: 20vw;
                 height: 32rem;
                 padding-left: 2rem;
                 padding-right: 2rem;
@@ -66,12 +66,12 @@
         padding: 1rem;
     }
     @media only screen and (min-width: 321px) and (max-width: 350px) {
-        height: 8rem;
+        height: 6rem;
     }
     @media only screen and (min-width: 351px) and (max-width: 599px) {
-        height: 7rem;
+        height: 5rem;
     }
     @media only screen and (min-width: 600px) {
-        height: 5rem;
+        height: 7rem;
     }
 }

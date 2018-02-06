@@ -49,10 +49,6 @@ export default {
 <style lang="scss" scoped>
 @import "../sass/main.scss";
 
-.horizontal-slide__wrapper--card {
-  margin-top: 6rem;
-}
-
 .forecast {
   height: 100%;
   width: 100%;
@@ -63,5 +59,21 @@ export default {
     font-size: 2rem;
     font-weight: 400;
   }
+}
+
+.card-image {
+    @media only screen and (max-width: 320px) {
+        height: 4rem;
+        padding: 1rem;
+    }
+    @media only screen and (min-width: 321px) and (max-width: 350px) {
+        height: 5rem;
+    }
+    @media only screen and (min-width: 351px) and (max-width: 599px) {
+        height: 4rem;
+    }
+    @media only screen and (min-width: 600px) {
+        height: 7rem;
+    }
 }
 </style>

@@ -52,7 +52,7 @@ export default {
 }
 
 .index-link {
-  color: $secondary-text-color;
+  color: $secondary-blue-color;
   font-weight: 700;
 }
 </style>

@@ -1,6 +1,5 @@
 .footer-button-row {
     list-style: none;
-    height: 8rem;
     width: 100%;
     position: fixed;
     left: 0;
@@ -11,11 +10,13 @@
     align-items: center;
     justify-content: space-around;
 
-    @media only screen and (max-width: 320px) {
-        padding-bottom: .5rem;
+    @media only screen and (min-width: 321px) and (max-width: 400px) {
+        height: 5rem;
     }
 
-    @media only screen and (min-width: 330px) and (max-width: 375px) {
-        padding-bottom: 1.5rem;
+    @media only screen and (min-width: 401px) {
+        height: 8rem;
+        padding: 1.5rem;
     }
+
 }

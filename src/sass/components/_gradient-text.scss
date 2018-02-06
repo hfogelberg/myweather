@@ -1,8 +1,6 @@
   .gradient-text {
     text-align: center;
-    text-transform: uppercase;
-    background-image: linear-gradient(to right, $secondary-text-color, $primary-color-text);
-
+    background-image: linear-gradient(to right, $secondary-blue-color, $primary-blue-color);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

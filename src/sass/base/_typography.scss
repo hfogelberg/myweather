@@ -1,5 +1,5 @@
     .primary-header {
-        color: $primary-color-text;
+        color: $primary-blue-color;
         text-align: center;
         @media only screen and (max-width: 599px) {
             font-size: 4rem;
@@ -11,14 +11,13 @@
     }
 
     .secondary-header {
-        color: $primary-color-text;
+        color: $primary-blue-color;
         text-align: center;
         @media only screen and (max-width: 320px) {
             font-size: 2.6rem;
         }
         @media only screen and (min-width: 321px) and (max-width: 599px) {
-            font-size: 3rem;
-            margin-bottom: $gutter-xsmall;
+            font-size: 2.8rem;
         }
         @media only screen and  (min-width: 600px) {
             font-size: 5rem;

@@ -1,9 +1,25 @@
-.btn:link,
-.btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    text-align: center;
+.btn {
+    box-shadow: 0 10px 20px rgba($color-black, 0.2);
+
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    &:hover {
+        box-shadow: 0 15px 25px rgba($color-black, 0.4);
+    }
+
+    &:active {
+        box-shadow: 0 10px 20px rgba($color-black, 0.3);
+        outline: none;
+        border: 0;
+    }
 }
+
+
 
 .button-row {
     margin-top: 10rem;
@@ -15,6 +31,8 @@
 .btn-large {
     border-radius: 10px;
     margin: 0 1rem;
+    color: $color-white;
+
     @media only screen and (max-width: 320px) {
         font-size: 1.6rem;
         width: 8rem;
@@ -40,7 +58,8 @@
 .btn-medium {
     font-weight: 400;
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba($color-black, 0.2);
+    color: $color-white;
+
     @media only screen and (max-width: 599px) {
         padding: 0 $gutter-xsmall;
         font-size: 1.2rem;
@@ -52,6 +71,8 @@
         font-size: 2rem;
         margin: 0 1rem;
         height: 4rem;
+        min-width: 6rem;
+        padding: 0 3rem;
     }
 }
 
@@ -65,16 +86,13 @@
 }
 
 .btn-1 {
-    background-color: $color-lime;
-    color: $color-black;
+    background-color: $pale-blue-color;
 }
 
 .btn-2 {
-    background-color: $color-indigo;
-    color: $color-black;
+    background-color: $primary-blue-color;
 }
 
 .btn-3 {
-    background-color: $color-amber;
-    color: $color-black;
+    background-color: $secondary-blue-color;
 }

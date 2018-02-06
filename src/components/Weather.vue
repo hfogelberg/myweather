@@ -3,14 +3,14 @@
   <ul class="menu-bar">
     <li class="menu-bar__item">
       <router-link to="/" class="menu-bar__item--link">
-        <h3 class="tertiary-header gradient-text">MyWeather</h3>
+        <h3 class="tertiary-header gradient-text">My Weather</h3>
       </router-link>
     </li>
     <li>
-      <button @click="getTides" class="btn-transparent menu-bar__item--link btn-1 btn-medium">Tides</button>
+      <button @click="getTides" class="btn menu-bar__item--link btn-1 btn-medium">Tides</button>
     </li>
     <li>
-      <button @click="getSunmoon" class="menu-bar__item--link btn-2 btn-medium">Astronomy</button>
+      <button @click="getSunmoon" class="btn menu-bar__item--link btn-2 btn-medium">Astronomy</button>
     </li>
   </ul>
 

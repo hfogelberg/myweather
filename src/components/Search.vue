@@ -7,6 +7,7 @@
         <input ref="autocomplete" 
                 placeholder="Search" 
                 class="search-location"
+                @click="callReset"
                 onfocus="value = ''" 
                 v-model="city"
                 type="text"/>
@@ -25,17 +26,17 @@
 
     <div class="row button-row" v-show="hasCity">
         <div class="col-4-12 color-red" v-show="hasAstro">
-          <button @click="getWeather" class="btn-large btn-1">
+          <button @click="getWeather" class="btn btn-large btn-1">
             Weather
           </button>
         </div>
         <div class="col-4-12 color-blue"  v-show="hasTides">
-          <button @click="getTides" class="btn-large btn-2">
+          <button @click="getTides" class="btn btn-large btn-2">
             Tides
           </button>
         </div>
         <div class="col-4-12 color-green" v-show="hasWeather">
-          <button @click="getSun" class="btn-large btn-3">
+          <button @click="getSun" class="btn btn-large btn-3">
             Astronomy
           </button>
         </div>
@@ -87,6 +88,12 @@ export default {
   },
 
   methods: {
+    callReset() {
+      this.$store.dispatch("reset");
+      this.$store.dispatch("setIsSearching", false);
+      this.$store.dispatch("setHasCity", false);
+    },
+
     getAllData() {
       this.$store.dispatch("getSunMoon");
       this.$store.dispatch("getForecast");
